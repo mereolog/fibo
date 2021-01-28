@@ -10,18 +10,22 @@
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:skos="http://www.w3.org/2004/02/skos/core#"
      xmlns:Analytics="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/Analytics/"
+     xmlns:Relations="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/"
+     xmlns:VirtualPlaces="https://spec.edmcouncil.org/fibo/ontology/FND/Places/VirtualPlaces/"
+     xmlns:FinancialDates="https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/"
      xmlns:fibo-fnd-qt-qtu="https://spec.edmcouncil.org/fibo/ontology/FND/Quantities/QuantitiesAndUnits/"
      xmlns:fibo-fnd-utl-av="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/"
      xmlns:fibo-fnd-acc-cur="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/"
      xmlns:fibo-fnd-arr-arr="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/"
      xmlns:fibo-fnd-law-jur="https://spec.edmcouncil.org/fibo/ontology/FND/Law/Jurisdiction/"
-     xmlns:fibo-fnd-acc-ccur="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/">
+     xmlns:fibo-fnd-acc-ccur="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/"
+     xmlns:CountryRepresentation="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/"
+     xmlns:LanguageRepresentation="https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/">
     <owl:Ontology rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/">
         <owl:versionIRI rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/20210101/Accounting/Cryptocurrency/"/>
         <owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/"/>
         <owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Law/Jurisdiction/"/>
         <owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Quantities/QuantitiesAndUnits/"/>
-        <owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/Analytics/"/>
         <owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/"/>
         <owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/master/latest/FBC/FunctionalEntities/Markets/"/>
         <owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/master/latest/FND/DatesAndTimes/Occurrences/"/>
@@ -92,6 +96,31 @@
     
 
 
+    <!-- https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/hasCoinLimit -->
+
+    <owl:DatatypeProperty rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/hasCoinLimit">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptocurrency"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label xml:lang="en">has maximal number of coins</rdfs:label>
+        <skos:scopeNote xml:lang="en">If a cryptocurrency has no limit of coins, then set the value to -1.</skos:scopeNote>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/hasPrecision -->
+
+    <owl:DatatypeProperty rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/hasPrecision">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptocurrency"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+        <rdfs:label xml:lang="en">has precision</rdfs:label>
+        <skos:example xml:lang="en">Value 3 means that the base unit of the currency in question can be split into 10^3 minimal units.</skos:example>
+        <fibo-fnd-utl-av:explanatoryNote xml:lang="en">This property expresses the maximal number of decimals that can be used to specify the exact amount of cryptocurrency.</fibo-fnd-utl-av:explanatoryNote>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/isMineable -->
 
     <owl:DatatypeProperty rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/isMineable">
@@ -136,8 +165,8 @@
     <!-- https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/ConsensusMechanism -->
 
     <owl:Class rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/ConsensusMechanism">
-        <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/Occurrences/Occurrence"/>
-        <rdfs:label xml:lang="en">consensus mechanisms</rdfs:label>
+        <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Algorithm"/>
+        <rdfs:label xml:lang="en">consensus mechanism</rdfs:label>
     </owl:Class>
     
 
@@ -165,6 +194,32 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/hasStartDate"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/ExplicitDate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Documents/hasTerminationDate"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/ExplicitDate"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/hasCoinLimit"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/hasPrecision"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/isMineable"/>
                 <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
             </owl:Restriction>
@@ -173,6 +228,12 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/supportsSmartContracts"/>
                 <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Places/VirtualPlaces/hasWebsite"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -258,9 +319,86 @@
         </rdfs:subClassOf>
         <rdfs:label xml:lang="en">proof of work</rdfs:label>
     </owl:Class>
-    <rdf:Description>
-        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/BTCIdentifier -->
+
+    <owl:NamedIndividual rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/BTCIdentifier">
+        <rdf:type rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/CryptocurrencyIdentifier"/>
+        <LanguageRepresentation:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BTC</LanguageRepresentation:hasTag>
+        <rdfs:label xml:lang="en">Bitcoin BTC identifier</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Bitcoin -->
+
+    <owl:NamedIndividual rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Bitcoin">
+        <rdf:type rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptocurrency"/>
+        <FinancialDates:hasStartDate rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/DateOf20090109"/>
+        <Relations:isControlledBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/BitcoinProofOfWork"/>
+        <LanguageRepresentation:isIdentifiedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/BTCIdentifier"/>
+        <LanguageRepresentation:isIdentifiedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/XBTIdentifier"/>
+        <hasCoinLimit rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">21000000</hasCoinLimit>
+        <hasPrecision rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</hasPrecision>
+        <isMineable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isMineable>
+        <supportsSmartContracts rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</supportsSmartContracts>
+        <VirtualPlaces:hasWebsite rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://bitcoin.org/</VirtualPlaces:hasWebsite>
+        <Relations:hasFormalName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bitcoin</Relations:hasFormalName>
+        <rdfs:label xml:lang="en">Bitcoin</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/BitcoinProofOfWork -->
+
+    <owl:NamedIndividual rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/BitcoinProofOfWork">
+        <rdf:type rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/ProofOfWorkConsensus"/>
+        <CountryRepresentation:uses rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/SHA-256"/>
+        <rdfs:label xml:lang="en">Bitcoin&apos;s proof-of-work algorithm</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/DateOf20090109 -->
+
+    <owl:NamedIndividual rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/DateOf20090109">
+        <rdf:type rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/ExplicitDate"/>
+        <FinancialDates:hasDateValue rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2009-01-09</FinancialDates:hasDateValue>
+        <rdfs:label xml:lang="en">2009-01-09</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/SHA-256 -->
+
+    <owl:NamedIndividual rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/SHA-256">
+        <rdf:type rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/HashFunction"/>
+        <rdfs:label>SHA-256</rdfs:label>
+        <fibo-fnd-utl-av:synonym xml:lang="en">Secure Hash Algorithm 2</fibo-fnd-utl-av:synonym>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/XBTIdentifier -->
+
+    <owl:NamedIndividual rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/XBTIdentifier">
+        <rdf:type rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/CryptocurrencyIdentifier"/>
+        <LanguageRepresentation:hasTag rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XBT</LanguageRepresentation:hasTag>
+        <rdfs:label xml:lang="en">Bitcoin XBT identifier</rdfs:label>
+    </owl:NamedIndividual>
     <rdf:Description>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
     </rdf:Description>
@@ -269,6 +407,9 @@
     </rdf:Description>
     <rdf:Description>
         <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
     </rdf:Description>
     <rdf:Description>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
