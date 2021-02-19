@@ -27,10 +27,12 @@
         <owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Law/Jurisdiction/"/>
         <owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Quantities/QuantitiesAndUnits/"/>
         <owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/"/>
+        <owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/master/latest/FBC/FinancialInstruments/FinancialInstruments/"/>
         <owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/master/latest/FBC/FunctionalEntities/Markets/"/>
         <owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/master/latest/FND/Accounting/CurrencyAmount/"/>
         <owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/master/latest/FND/DatesAndTimes/Occurrences/"/>
         <owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/master/latest/FND/Relations/Relations/"/>
+        <owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/master/latest/SEC/Securities/SecuritiesListings/"/>
         <dct:abstract>This ontology defines the concept of cryptocurrency for use in defining other FIBO ontology elements.</dct:abstract>
         <dct:license rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">http://opensource.org/licenses/MIT</dct:license>
         <sm:contentLanguage rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://www.w3.org/TR/owl2-quick-reference/</sm:contentLanguage>
@@ -205,6 +207,7 @@
         </rdfs:subClassOf>
         <rdfs:label xml:lang="en">asset-referenced token</rdfs:label>
         <skos:definition xml:lang="en">type of crypto-asset that purports to maintain a stable value by referring to the value of several fiat currencies that are legal tender, one or several commodities or one or several crypto-assets, or a combination of such assets</skos:definition>
+        <fibo-fnd-utl-av:synonym xml:lang="en">stablecoin</fibo-fnd-utl-av:synonym>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/AssetReferencedToken"/>
@@ -212,6 +215,14 @@
         <owl:annotatedTarget xml:lang="en">type of crypto-asset that purports to maintain a stable value by referring to the value of several fiat currencies that are legal tender, one or several commodities or one or several crypto-assets, or a combination of such assets</owl:annotatedTarget>
         <fibo-fnd-utl-av:definitionOrigin rdf:resource="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:52020PC0593&amp;from=EN"/>
     </owl:Axiom>
+    
+
+
+    <!-- https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Blockchain -->
+
+    <owl:Class rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Blockchain">
+        <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/DistributedLedgerTechnology"/>
+    </owl:Class>
     
 
 
@@ -357,14 +368,14 @@
         <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/MediumOfExchange"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/isControlledBy"/>
-                <owl:someValuesFrom rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/DistributedLedgerTechnology"/>
+                <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/isIssuedBy"/>
+                <owl:someValuesFrom rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/Agents/AutonomousAgent"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/isIssuedBy"/>
-                <owl:someValuesFrom rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/Agents/AutonomousAgent"/>
+                <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/isProvidedBy"/>
+                <owl:someValuesFrom rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/DistributedLedgerTechnology"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -433,6 +444,7 @@
         <rdfs:label xml:lang="en">cryptocurrency</rdfs:label>
         <skos:definition xml:lang="en">digital currency in which transactions are verified and records maintained by a decentralized system using cryptography, rather than by a centralized authority</skos:definition>
         <skos:definition xml:lang="en">digital representation of value or rights which may be transferred and stored electronically, using distributed ledger technology or similar technology</skos:definition>
+        <skos:definition xml:lang="en">digital representation of value that is not issued or guaranteed by a central bank or a public authority, is not necessarily attached to a legally established currency and does not possess a legal status of currency or money, but is accepted by natural or legal persons as a means of exchange and which can be transferred, stored and traded electronically</skos:definition>
         <skos:definition xml:lang="en">representations of United States currency or synthetic derivatives resting on a blockchain or decentralized cryptographic ledger, including
 (A) such representations or synthetic derivatives that are reserve-backed digital assets that are fully collateralized in a correspondent banking account, such as stablecoins; and
 (B) synthetic derivatives that are—
@@ -440,6 +452,7 @@
 (ii) collateralized by crypto-commodities, other crypto-currencies, or crypto-securities</skos:definition>
         <skos:definition xml:lang="en">type of digital unit that is used as a medium of exchange or a form of digitally stored value</skos:definition>
         <fibo-fnd-utl-av:synonym xml:lang="en">altcoin</fibo-fnd-utl-av:synonym>
+        <fibo-fnd-utl-av:synonym xml:lang="en">crypto asset</fibo-fnd-utl-av:synonym>
         <fibo-fnd-utl-av:synonym xml:lang="en">crypto-asset</fibo-fnd-utl-av:synonym>
         <fibo-fnd-utl-av:synonym xml:lang="en">digital currency</fibo-fnd-utl-av:synonym>
         <fibo-fnd-utl-av:synonym xml:lang="en">virtual currency</fibo-fnd-utl-av:synonym>
@@ -455,6 +468,12 @@
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2004/02/skos/core#definition"/>
         <owl:annotatedTarget xml:lang="en">digital representation of value or rights which may be transferred and stored electronically, using distributed ledger technology or similar technology</owl:annotatedTarget>
         <fibo-fnd-utl-av:definitionOrigin rdf:resource="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:52020PC0593&amp;from=EN"/>
+    </owl:Axiom>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptocurrency"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2004/02/skos/core#definition"/>
+        <owl:annotatedTarget xml:lang="en">digital representation of value that is not issued or guaranteed by a central bank or a public authority, is not necessarily attached to a legally established currency and does not possess a legal status of currency or money, but is accepted by natural or legal persons as a means of exchange and which can be transferred, stored and traded electronically</owl:annotatedTarget>
+        <fibo-fnd-utl-av:definitionOrigin rdf:resource="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018L0843&amp;from=EN"/>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptocurrency"/>
@@ -528,6 +547,12 @@
 
     <owl:Class rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/CryptocurrencyTradingPlatform">
         <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/CryptoassetServiceProvider"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/provides"/>
+                <owl:someValuesFrom rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/CryptocurrencyTradingPlatformOperation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:label xml:lang="en">cryptocurrency trading platform</rdfs:label>
         <fibo-fnd-utl-av:synonym xml:lang="en">crypto-asset trading platform</fibo-fnd-utl-av:synonym>
     </owl:Class>
@@ -542,6 +567,85 @@
         <fibo-fnd-utl-av:synonym xml:lang="en">operation of a trading platform for crypto-assets</fibo-fnd-utl-av:synonym>
         <fibo-fnd-utl-av:synonym xml:lang="en">operation of a trading platform for cryptocurrencies</fibo-fnd-utl-av:synonym>
     </owl:Class>
+    
+
+
+    <!-- https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/CustodianWalletProvider -->
+
+    <owl:Class rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/CustodianWalletProvider">
+        <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/CryptoassetServiceProvider"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/provides"/>
+                <owl:someValuesFrom rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/CryptocurrencyAdministration"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">custodian wallet provider</rdfs:label>
+        <skos:definition xml:lang="en">entity that provides services to safeguard private cryptographic keys on behalf of its customers, to hold, store and transfer virtual currencies</skos:definition>
+        <fibo-fnd-utl-av:synonym xml:lang="en">wallet provider</fibo-fnd-utl-av:synonym>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/CustodianWalletProvider"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2004/02/skos/core#definition"/>
+        <owl:annotatedTarget xml:lang="en">entity that provides services to safeguard private cryptographic keys on behalf of its customers, to hold, store and transfer virtual currencies</owl:annotatedTarget>
+        <fibo-fnd-utl-av:definitionOrigin rdf:resource="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32018L0843&amp;from=EN"/>
+    </owl:Axiom>
+    
+
+
+    <!-- https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/DLTMultilateralTradingFacility -->
+
+    <owl:Class rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/DLTMultilateralTradingFacility">
+        <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/MultilateralTradingFacility"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/uses"/>
+                <owl:someValuesFrom rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/DistributedLedgerTechnology"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">DLT multilateral trading facility</rdfs:label>
+        <skos:definition xml:lang="en">multilateral trading facility, operated by an investment firm or a market operator, that only admits to trading DLT transferable securities and that may be permitted, on the basis of transparent, non-discretionary, uniform rules and procedures, to:
+(a)ensure the initial recording of DLT transferable securities;
+(b)settle transactions in DLT transferable securities against payment; and
+(c)provide safekeeping services in relation to DLT transferable securities, or where applicable, to related payments and collateral, provided using the DLT MTF</skos:definition>
+        <fibo-fnd-utl-av:synonym xml:lang="en">DLT MTF</fibo-fnd-utl-av:synonym>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/DLTMultilateralTradingFacility"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2004/02/skos/core#definition"/>
+        <owl:annotatedTarget xml:lang="en">multilateral trading facility, operated by an investment firm or a market operator, that only admits to trading DLT transferable securities and that may be permitted, on the basis of transparent, non-discretionary, uniform rules and procedures, to:
+(a)ensure the initial recording of DLT transferable securities;
+(b)settle transactions in DLT transferable securities against payment; and
+(c)provide safekeeping services in relation to DLT transferable securities, or where applicable, to related payments and collateral, provided using the DLT MTF</owl:annotatedTarget>
+        <fibo-fnd-utl-av:definitionOrigin rdf:resource="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:52020PC0594&amp;qid=1613726756856&amp;from=EN"/>
+    </owl:Axiom>
+    
+
+
+    <!-- https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/DLTTransferableSecurity -->
+
+    <owl:Class rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/DLTTransferableSecurity">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/NegotiableSecurity"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesListings/isTradedOn"/>
+                        <owl:someValuesFrom rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/DLTMultilateralTradingFacility"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/NegotiableSecurity"/>
+        <rdfs:label xml:lang="en">DLT transferable security</rdfs:label>
+        <skos:definition xml:lang="en">negotiable security that is issued, recorded, transferred and stored using a DLT</skos:definition>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/DLTTransferableSecurity"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2004/02/skos/core#definition"/>
+        <owl:annotatedTarget xml:lang="en">negotiable security that is issued, recorded, transferred and stored using a DLT</owl:annotatedTarget>
+        <fibo-fnd-utl-av:adaptedFrom rdf:resource="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:52020PC0594&amp;qid=1613726756856&amp;from=EN"/>
+    </owl:Axiom>
     
 
 
@@ -563,40 +667,22 @@
                 <owl:someValuesFrom rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/ConsensusMechanism"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:label xml:lang="en">distributed ledger technology</rdfs:label>
-        <skos:definition xml:lang="en">ledger that—
-(A) runs as a stand-alone blockchain that is secured through a minting mechanism such as proof-of-work, proof-of-stake, or otherwise;
-(B) runs as a cryptographic asset or smart-contract on an existing stand-alone blockchain and is secured through the issuing blockchain minting mechanism;
-(C) is immutable and can not be overwritten without controlling a majority stake of the associated network;
-(D) requires a cryptographic link between blocks of transactional data;
-(E) is permissionless, requiring no third party to transact, only a connection to the internet;
-(F) is an irreversible bearer commodity, with all transactions being final;
-(G) is not controllable by any one single entity (defined as having less than half of all nodes controlled by one single entity); and
-(H) is not directly issued by a nation-state or private entity.</skos:definition>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/provides"/>
+                <owl:someValuesFrom rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptocurrency"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointUnionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/PermissionBasedDistributedLedgerTechnology"/>
+            <rdf:Description rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/PermissionlessDistributedLedgerTechnology"/>
+        </owl:disjointUnionOf>
+        <rdfs:label xml:lang="en">distributed ledger</rdfs:label>
         <skos:definition xml:lang="en">type of technology that support the distributed recording of encrypted data</skos:definition>
         <fibo-fnd-utl-av:synonym xml:lang="en">DLT</fibo-fnd-utl-av:synonym>
         <fibo-fnd-utl-av:synonym xml:lang="en">decentralized cryptographic ledger</fibo-fnd-utl-av:synonym>
+        <fibo-fnd-utl-av:synonym xml:lang="en">distributed ledger technology</fibo-fnd-utl-av:synonym>
     </owl:Class>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/DistributedLedgerTechnology"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2004/02/skos/core#definition"/>
-        <owl:annotatedTarget xml:lang="en">ledger that—
-(A) runs as a stand-alone blockchain that is secured through a minting mechanism such as proof-of-work, proof-of-stake, or otherwise;
-(B) runs as a cryptographic asset or smart-contract on an existing stand-alone blockchain and is secured through the issuing blockchain minting mechanism;
-(C) is immutable and can not be overwritten without controlling a majority stake of the associated network;
-(D) requires a cryptographic link between blocks of transactional data;
-(E) is permissionless, requiring no third party to transact, only a connection to the internet;
-(F) is an irreversible bearer commodity, with all transactions being final;
-(G) is not controllable by any one single entity (defined as having less than half of all nodes controlled by one single entity); and
-(H) is not directly issued by a nation-state or private entity.</owl:annotatedTarget>
-        <fibo-fnd-utl-av:definitionOrigin>https://www.congress.gov/bill/116th-congress/house-bill/6154/text?r=10&amp;s=1</fibo-fnd-utl-av:definitionOrigin>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/DistributedLedgerTechnology"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2004/02/skos/core#definition"/>
-        <owl:annotatedTarget xml:lang="en">type of technology that support the distributed recording of encrypted data</owl:annotatedTarget>
-        <skos:definition rdf:resource="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:52020PC0593&amp;from=EN"/>
-    </owl:Axiom>
     
 
 
@@ -613,6 +699,7 @@
         <rdfs:label xml:lang="en">e-money token</rdfs:label>
         <rdfs:label xml:lang="en">electronic money token</rdfs:label>
         <skos:definition xml:lang="en">type of crypto-asset the main purpose of which is to be used as a means of exchange and that purports to maintain a stable value by referring to the value of a fiat currency that is legal tender</skos:definition>
+        <fibo-fnd-utl-av:synonym xml:lang="en">payment token</fibo-fnd-utl-av:synonym>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/ElectronicMoneyToken"/>
@@ -643,6 +730,54 @@
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2004/02/skos/core#definition"/>
         <owl:annotatedTarget xml:lang="en">intermediary instrument or system used to facilitate the sale, purchase, or trade of goods between parties</owl:annotatedTarget>
         <fibo-fnd-utl-av:definitionOrigin rdf:resource="https://www.investopedia.com/terms/m/mediumofexchange.asp"/>
+    </owl:Axiom>
+    
+
+
+    <!-- https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/PermissionBasedDistributedLedgerTechnology -->
+
+    <owl:Class rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/PermissionBasedDistributedLedgerTechnology">
+        <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/DistributedLedgerTechnology"/>
+        <rdfs:label xml:lang="en">permission-based distributed ledger technology</rdfs:label>
+        <fibo-fnd-utl-av:synonym xml:lang="en">permission-based DLT</fibo-fnd-utl-av:synonym>
+        <fibo-fnd-utl-av:synonym xml:lang="en">private DLT</fibo-fnd-utl-av:synonym>
+        <fibo-fnd-utl-av:synonym xml:lang="en">private distributed ledger technology</fibo-fnd-utl-av:synonym>
+    </owl:Class>
+    
+
+
+    <!-- https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/PermissionlessDistributedLedgerTechnology -->
+
+    <owl:Class rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/PermissionlessDistributedLedgerTechnology">
+        <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/DistributedLedgerTechnology"/>
+        <rdfs:label xml:lang="en">permissionless distributed ledger technology</rdfs:label>
+        <skos:definition xml:lang="en">ledger that
+(A) runs as a stand-alone blockchain that is secured through a minting mechanism such as proof-of-work, proof-of-stake, or otherwise;
+(B) runs as a cryptographic asset or smart-contract on an existing stand-alone blockchain and is secured through the issuing blockchain minting mechanism;
+(C) is immutable and can not be overwritten without controlling a majority stake of the associated network;
+(D) requires a cryptographic link between blocks of transactional data;
+(E) is permissionless, requiring no third party to transact, only a connection to the internet;
+(F) is an irreversible bearer commodity, with all transactions being final;
+(G) is not controllable by any one single entity (defined as having less than half of all nodes controlled by one single entity); and
+(H) is not directly issued by a nation-state or private entity.</skos:definition>
+        <fibo-fnd-utl-av:synonym xml:lang="en">permissionless DLT</fibo-fnd-utl-av:synonym>
+        <fibo-fnd-utl-av:synonym xml:lang="en">public DLT</fibo-fnd-utl-av:synonym>
+        <fibo-fnd-utl-av:synonym xml:lang="en">public distributed ledger technology</fibo-fnd-utl-av:synonym>
+        <fibo-fnd-utl-av:synonym xml:lang="en">unpermissioned DLT</fibo-fnd-utl-av:synonym>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/PermissionlessDistributedLedgerTechnology"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2004/02/skos/core#definition"/>
+        <owl:annotatedTarget xml:lang="en">ledger that
+(A) runs as a stand-alone blockchain that is secured through a minting mechanism such as proof-of-work, proof-of-stake, or otherwise;
+(B) runs as a cryptographic asset or smart-contract on an existing stand-alone blockchain and is secured through the issuing blockchain minting mechanism;
+(C) is immutable and can not be overwritten without controlling a majority stake of the associated network;
+(D) requires a cryptographic link between blocks of transactional data;
+(E) is permissionless, requiring no third party to transact, only a connection to the internet;
+(F) is an irreversible bearer commodity, with all transactions being final;
+(G) is not controllable by any one single entity (defined as having less than half of all nodes controlled by one single entity); and
+(H) is not directly issued by a nation-state or private entity.</owl:annotatedTarget>
+        <fibo-fnd-utl-av:definitionOrigin rdf:resource="https://www.congress.gov/bill/116th-congress/house-bill/6154/text?r=10&amp;s=1"/>
     </owl:Axiom>
     
 
@@ -686,6 +821,22 @@
         </rdfs:subClassOf>
         <rdfs:label xml:lang="en">proof of work</rdfs:label>
     </owl:Class>
+    
+
+
+    <!-- https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/SecurityToken -->
+
+    <owl:Class rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/SecurityToken">
+        <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptocurrency"/>
+        <rdfs:label xml:lang="en">security token</rdfs:label>
+        <skos:definition xml:lang="en">type of crypto-assets that qualify as a financial instrument under MiFID II</skos:definition>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/SecurityToken"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2004/02/skos/core#definition"/>
+        <owl:annotatedTarget xml:lang="en">type of crypto-assets that qualify as a financial instrument under MiFID II</owl:annotatedTarget>
+        <fibo-fnd-utl-av:definitionOrigin rdf:resource="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:52020SC0380&amp;qid=1613724117327&amp;from=EN"/>
+    </owl:Axiom>
     
 
 
@@ -845,11 +996,7 @@ agreements between people and organizations</owl:annotatedTarget>
 
     <!-- https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Blockchain -->
 
-    <owl:NamedIndividual rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Blockchain">
-        <rdf:type rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/DistributedLedgerTechnology"/>
-        <Relations:isControlledBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/BitcoinProofOfWork"/>
-        <rdfs:label xml:lang="en">Blockchain</rdfs:label>
-    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Blockchain"/>
     
 
 
@@ -887,9 +1034,6 @@ agreements between people and organizations</owl:annotatedTarget>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
     </rdf:Description>
     <rdf:Description>
-        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-    </rdf:Description>
-    <rdf:Description>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
     </rdf:Description>
     <rdf:Description>
@@ -899,8 +1043,33 @@ agreements between people and organizations</owl:annotatedTarget>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
     </rdf:Description>
     <rdf:Description>
+        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
     </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Blockchain">
+        <fibo-fnd-utl-av:synonym>block chain</fibo-fnd-utl-av:synonym>
+        <rdfs:label xml:lang="en">blockchain</rdfs:label>
+        <skos:definition xml:lang="en">growing list of records, called blocks, that are linked using cryptography</skos:definition>
+    </rdf:Description>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Blockchain"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2004/02/skos/core#definition"/>
+        <owl:annotatedTarget xml:lang="en">growing list of records, called blocks, that are linked using cryptography</owl:annotatedTarget>
+        <sm:directSource rdf:resource="https://en.wikipedia.org/wiki/Blockchain"/>
+    </owl:Axiom>
     
 
 
