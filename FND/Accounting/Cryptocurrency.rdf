@@ -129,6 +129,7 @@
 
     <owl:DatatypeProperty rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/hasCoinLimit">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptocurrency"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
         <rdfs:label xml:lang="en">has maximal number of coins</rdfs:label>
         <skos:scopeNote xml:lang="en">If a cryptocurrency has no limit of coins, then set the value to -1.</skos:scopeNote>
@@ -140,6 +141,7 @@
 
     <owl:DatatypeProperty rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/hasPrecision">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptocurrency"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
         <rdfs:label xml:lang="en">has precision</rdfs:label>
         <skos:example xml:lang="en">Value 3 means that the base unit of the currency in question can be split into 10^3 minimal units.</skos:example>
@@ -152,18 +154,10 @@
 
     <owl:DatatypeProperty rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/isMineable">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptocurrency"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
         <rdfs:label xml:lang="en">is mineable</rdfs:label>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/supportsSmartContracts -->
-
-    <owl:DatatypeProperty rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/supportsSmartContracts">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-        <rdfs:label xml:lang="en">supports smart contracts</rdfs:label>
+        <fibo-fnd-utl-av:explanatoryNote xml:lang="en">This property indicates whether a cryptocurrency can be mined.</fibo-fnd-utl-av:explanatoryNote>
     </owl:DatatypeProperty>
     
 
@@ -190,21 +184,26 @@
     <!-- https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/AssetReferencedToken -->
 
     <owl:Class rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/AssetReferencedToken">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptocurrency"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/refersTo"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/Currency"/>
+                                    <rdf:Description rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/Asset"/>
+                                    <rdf:Description rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/Commodity"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptocurrency"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/refersTo"/>
-                <owl:someValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/Currency"/>
-                            <rdf:Description rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/Asset"/>
-                            <rdf:Description rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/Commodity"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label xml:lang="en">asset-referenced token</rdfs:label>
         <skos:definition xml:lang="en">type of crypto-asset that purports to maintain a stable value by referring to the value of several fiat currencies that are legal tender, one or several commodities or one or several crypto-assets, or a combination of such assets</skos:definition>
         <fibo-fnd-utl-av:synonym xml:lang="en">stablecoin</fibo-fnd-utl-av:synonym>
@@ -246,6 +245,42 @@
         <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Algorithm"/>
         <rdfs:label xml:lang="en">consensus mechanism</rdfs:label>
     </owl:Class>
+    
+
+
+    <!-- https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptoasset -->
+
+    <owl:Class rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptoasset">
+        <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/DigitalAsset"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/RegistrationAuthorities/isRegisteredBy"/>
+                <owl:someValuesFrom rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/DistributedLedgerTechnology"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/represents"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/Claim"/>
+                            <rdf:Description rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/Good"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">crypto-asset</rdfs:label>
+        <skos:definition xml:lang="en">digital representation of value or rights which may be transferred and stored electronically, using distributed ledger technology or similar technology</skos:definition>
+        <fibo-fnd-utl-av:synonym xml:lang="en">cryptoasset</fibo-fnd-utl-av:synonym>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptoasset"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2004/02/skos/core#definition"/>
+        <owl:annotatedTarget xml:lang="en">digital representation of value or rights which may be transferred and stored electronically, using distributed ledger technology or similar technology</owl:annotatedTarget>
+        <fibo-fnd-utl-av:definitionOrigin rdf:resource="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:52020PC0593&amp;from=EN"/>
+    </owl:Axiom>
     
 
 
@@ -335,14 +370,8 @@
     <!-- https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptocommodity -->
 
     <owl:Class rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptocommodity">
-        <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/DigitalAsset"/>
+        <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptoasset"/>
         <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/Commodity"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/involves"/>
-                <owl:someValuesFrom rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/DistributedLedgerTechnology"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:label xml:lang="en">cryptocommodity</rdfs:label>
         <skos:definition xml:lang="en">economic goods or services, including derivatives, that
 (A) have full or substantial fungibility;
@@ -364,31 +393,20 @@
     <!-- https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptocurrency -->
 
     <owl:Class rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptocurrency">
-        <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/DigitalAsset"/>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptoasset"/>
+                    <rdf:Description rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/MediumOfExchange"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptoasset"/>
         <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/MediumOfExchange"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/isIssuedBy"/>
                 <owl:someValuesFrom rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/AgentsAndPeople/Agents/AutonomousAgent"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/isProvidedBy"/>
-                <owl:someValuesFrom rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/DistributedLedgerTechnology"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/represents"/>
-                <owl:someValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/Claim"/>
-                            <rdf:Description rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/ProductsAndServices/ProductsAndServices/Good"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:someValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -406,8 +424,9 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/hasCoinLimit"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+                <owl:onProperty rdf:resource="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/isUsedBy"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/SmartContract"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -424,14 +443,15 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/supportsSmartContracts"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+                <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Places/VirtualPlaces/hasWebsite"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Places/VirtualPlaces/hasWebsite"/>
-                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+                <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/hasCoinLimit"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -443,7 +463,6 @@
         <owl:disjointWith rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/Currency"/>
         <rdfs:label xml:lang="en">cryptocurrency</rdfs:label>
         <skos:definition xml:lang="en">digital currency in which transactions are verified and records maintained by a decentralized system using cryptography, rather than by a centralized authority</skos:definition>
-        <skos:definition xml:lang="en">digital representation of value or rights which may be transferred and stored electronically, using distributed ledger technology or similar technology</skos:definition>
         <skos:definition xml:lang="en">digital representation of value that is not issued or guaranteed by a central bank or a public authority, is not necessarily attached to a legally established currency and does not possess a legal status of currency or money, but is accepted by natural or legal persons as a means of exchange and which can be transferred, stored and traded electronically</skos:definition>
         <skos:definition xml:lang="en">representations of United States currency or synthetic derivatives resting on a blockchain or decentralized cryptographic ledger, including
 (A) such representations or synthetic derivatives that are reserve-backed digital assets that are fully collateralized in a correspondent banking account, such as stablecoins; and
@@ -452,8 +471,6 @@
 (ii) collateralized by crypto-commodities, other crypto-currencies, or crypto-securities</skos:definition>
         <skos:definition xml:lang="en">type of digital unit that is used as a medium of exchange or a form of digitally stored value</skos:definition>
         <fibo-fnd-utl-av:synonym xml:lang="en">altcoin</fibo-fnd-utl-av:synonym>
-        <fibo-fnd-utl-av:synonym xml:lang="en">crypto asset</fibo-fnd-utl-av:synonym>
-        <fibo-fnd-utl-av:synonym xml:lang="en">crypto-asset</fibo-fnd-utl-av:synonym>
         <fibo-fnd-utl-av:synonym xml:lang="en">digital currency</fibo-fnd-utl-av:synonym>
         <fibo-fnd-utl-av:synonym xml:lang="en">virtual currency</fibo-fnd-utl-av:synonym>
     </owl:Class>
@@ -462,12 +479,6 @@
         <owl:annotatedProperty rdf:resource="http://www.w3.org/2004/02/skos/core#definition"/>
         <owl:annotatedTarget xml:lang="en">digital currency in which transactions are verified and records maintained by a decentralized system using cryptography, rather than by a centralized authority</owl:annotatedTarget>
         <fibo-fnd-utl-av:definitionOrigin rdf:resource="https://www.lexico.com/en/definition/cryptocurrency"/>
-    </owl:Axiom>
-    <owl:Axiom>
-        <owl:annotatedSource rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptocurrency"/>
-        <owl:annotatedProperty rdf:resource="http://www.w3.org/2004/02/skos/core#definition"/>
-        <owl:annotatedTarget xml:lang="en">digital representation of value or rights which may be transferred and stored electronically, using distributed ledger technology or similar technology</owl:annotatedTarget>
-        <fibo-fnd-utl-av:definitionOrigin rdf:resource="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:52020PC0593&amp;from=EN"/>
     </owl:Axiom>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptocurrency"/>
@@ -483,6 +494,7 @@
 (B) synthetic derivatives that are—
 (i) determined by decentralized oracles or smart contracts; and
 (ii) collateralized by crypto-commodities, other crypto-currencies, or crypto-securities</owl:annotatedTarget>
+        <skos:editorialNote xml:lang="en">mailto:pawel.garbacz@makolab.com is not sure that this definition fits here.</skos:editorialNote>
         <fibo-fnd-utl-av:definitionOrigin rdf:resource="https://www.congress.gov/bill/116th-congress/house-bill/6154/text?r=10&amp;s=1"/>
     </owl:Axiom>
     <owl:Axiom>
@@ -500,7 +512,8 @@
         <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/CryptoassetService"/>
         <rdfs:label xml:lang="en">cryptocurrency administration service</rdfs:label>
         <skos:definition xml:lang="en">safekeeping or controlling, on behalf of third parties, crypto-assets or the means of access to such crypto-assets, where applicable in the form of private cryptographic keys</skos:definition>
-        <fibo-fnd-utl-av:synonym xml:lang="en">custody and administration of crypto-assets on behalf of third parties</fibo-fnd-utl-av:synonym>
+        <fibo-fnd-utl-av:synonym xml:lang="en">administration of crypto-assets</fibo-fnd-utl-av:synonym>
+        <fibo-fnd-utl-av:synonym xml:lang="en">custody of crypto-assets</fibo-fnd-utl-av:synonym>
     </owl:Class>
     <owl:Axiom>
         <owl:annotatedSource rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/CryptocurrencyAdministration"/>
@@ -564,9 +577,16 @@
     <owl:Class rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/CryptocurrencyTradingPlatformOperation">
         <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/CryptoassetService"/>
         <rdfs:label xml:lang="en">cryptocurrency trading platform operation</rdfs:label>
+        <skos:definition xml:lang="en">managing one or more trading platforms for crypto-assets, within which multiple third-party buying and selling interests for crypto-assets can interact in a manner that results in a contract, either by exchanging one crypto-asset for another or a crypto-asset for fiat currency that is legal tender</skos:definition>
         <fibo-fnd-utl-av:synonym xml:lang="en">operation of a trading platform for crypto-assets</fibo-fnd-utl-av:synonym>
         <fibo-fnd-utl-av:synonym xml:lang="en">operation of a trading platform for cryptocurrencies</fibo-fnd-utl-av:synonym>
     </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/CryptocurrencyTradingPlatformOperation"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2004/02/skos/core#definition"/>
+        <owl:annotatedTarget xml:lang="en">managing one or more trading platforms for crypto-assets, within which multiple third-party buying and selling interests for crypto-assets can interact in a manner that results in a contract, either by exchanging one crypto-asset for another or a crypto-asset for fiat currency that is legal tender</owl:annotatedTarget>
+        <fibo-fnd-utl-av:definitionOrigin rdf:resource="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:52020PC0593&amp;from=EN"/>
+    </owl:Axiom>
     
 
 
@@ -669,8 +689,16 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/provides"/>
-                <owl:someValuesFrom rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptocurrency"/>
+                <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/RegistrationAuthorities/registers"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptoasset"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/RegistrationAuthorities/registers"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/SupplyChain"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointUnionOf rdf:parseType="Collection">
@@ -689,6 +717,17 @@
     <!-- https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/ElectronicMoneyToken -->
 
     <owl:Class rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/ElectronicMoneyToken">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptocurrency"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/refersTo"/>
+                        <owl:someValuesFrom rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/Currency"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptocurrency"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -731,6 +770,14 @@
         <owl:annotatedTarget xml:lang="en">intermediary instrument or system used to facilitate the sale, purchase, or trade of goods between parties</owl:annotatedTarget>
         <fibo-fnd-utl-av:definitionOrigin rdf:resource="https://www.investopedia.com/terms/m/mediumofexchange.asp"/>
     </owl:Axiom>
+    
+
+
+    <!-- https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Network -->
+
+    <owl:Class rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Network">
+        <rdfs:label xml:lang="en">network</rdfs:label>
+    </owl:Class>
     
 
 
@@ -827,7 +874,7 @@
     <!-- https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/SecurityToken -->
 
     <owl:Class rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/SecurityToken">
-        <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptocurrency"/>
+        <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptoasset"/>
         <rdfs:label xml:lang="en">security token</rdfs:label>
         <skos:definition xml:lang="en">type of crypto-assets that qualify as a financial instrument under MiFID II</skos:definition>
     </owl:Class>
@@ -883,6 +930,29 @@ agreements between people and organizations</owl:annotatedTarget>
 (A) to digitally facilitate, verify, or enforce the negotiation or performance of a contract; and
 (B) to allow the performance of credible transactions without third parties</owl:annotatedTarget>
         <fibo-fnd-utl-av:definitionOrigin>https://www.congress.gov/bill/116th-congress/house-bill/6154/text?r=10&amp;s=1</fibo-fnd-utl-av:definitionOrigin>
+    </owl:Axiom>
+    
+
+
+    <!-- https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/SupplyChain -->
+
+    <owl:Class rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/SupplyChain">
+        <rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Network"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/RegistrationAuthorities/isRegisteredBy"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/DistributedLedgerTechnology"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">supply chain</rdfs:label>
+        <skos:definition xml:lang="en">network between a company and its suppliers to produce and distribute a specific product to the final buyer</skos:definition>
+    </owl:Class>
+    <owl:Axiom>
+        <owl:annotatedSource rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/SupplyChain"/>
+        <owl:annotatedProperty rdf:resource="http://www.w3.org/2004/02/skos/core#definition"/>
+        <owl:annotatedTarget xml:lang="en">network between a company and its suppliers to produce and distribute a specific product to the final buyer</owl:annotatedTarget>
+        <fibo-fnd-utl-av:definitionOrigin rdf:resource="https://www.investopedia.com/terms/s/supplychain.asp"/>
     </owl:Axiom>
     
 
@@ -970,16 +1040,15 @@ agreements between people and organizations</owl:annotatedTarget>
     <owl:NamedIndividual rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Bitcoin">
         <rdf:type rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Cryptocurrency"/>
         <Relations:isControlledBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/Blockchain"/>
+        <LanguageRepresentation:isIdentifiedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/BTCIdentifier"/>
+        <LanguageRepresentation:isIdentifiedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/XBTIdentifier"/>
         <hasCoinLimit rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">21000000</hasCoinLimit>
         <hasPrecision rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</hasPrecision>
         <isMineable rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isMineable>
-        <supportsSmartContracts rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</supportsSmartContracts>
         <VirtualPlaces:hasWebsite rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://bitcoin.org/</VirtualPlaces:hasWebsite>
         <Relations:hasFormalName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bitcoin</Relations:hasFormalName>
         <rdfs:label xml:lang="en">Bitcoin</rdfs:label>
         <FinancialDates:hasStartDate rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/DateOf20090109"/>
-        <LanguageRepresentation:isIdentifiedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/BTCIdentifier"/>
-        <LanguageRepresentation:isIdentifiedBy rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/XBTIdentifier"/>
     </owl:NamedIndividual>
     
 
@@ -988,8 +1057,8 @@ agreements between people and organizations</owl:annotatedTarget>
 
     <owl:NamedIndividual rdf:about="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/BitcoinProofOfWork">
         <rdf:type rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/ProofOfWorkConsensus"/>
-        <rdfs:label xml:lang="en">Bitcoin&apos;s proof-of-work algorithm</rdfs:label>
         <CountryRepresentation:uses rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/SHA-256"/>
+        <rdfs:label xml:lang="en">Bitcoin&apos;s proof-of-work algorithm</rdfs:label>
     </owl:NamedIndividual>
     
 
@@ -1031,6 +1100,9 @@ agreements between people and organizations</owl:annotatedTarget>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
     </rdf:Description>
     <rdf:Description>
+        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
     </rdf:Description>
     <rdf:Description>
@@ -1041,9 +1113,6 @@ agreements between people and organizations</owl:annotatedTarget>
     </rdf:Description>
     <rdf:Description>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-    </rdf:Description>
-    <rdf:Description>
-        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
     </rdf:Description>
     <rdf:Description>
         <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>

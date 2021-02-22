@@ -3,11 +3,11 @@
     <uri id="Imports Wizard Entry" name="https://spec.edmcouncil.org/fibo/ontology/master/latest/SEC/Securities/SecuritiesListings/" uri="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesListings"/>
     <uri id="Imports Wizard Entry" name="https://spec.edmcouncil.org/fibo/ontology/master/latest/FBC/FinancialInstruments/FinancialInstruments/" uri="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/"/>
     <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
-        <uri id="Automatically generated entry, Timestamp=1613722607525" name="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/AccountingEquity/" uri="AccountingEquity.rdf"/>
-        <uri id="Automatically generated entry, Timestamp=1613722607525" name="duplicate:https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/" uri="Cryptocurrency.rdf"/>
-        <uri id="Automatically generated entry, Timestamp=1613722607525" name="duplicate:https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/" uri="Cryptocurrency_Noimports.rdf"/>
-        <uri id="Automatically generated entry, Timestamp=1613722607525" name="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/" uri="CurrencyAmount.rdf"/>
-        <uri id="Automatically generated entry, Timestamp=1613722607525" name="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/" uri="ISO4217-CurrencyCodes.rdf"/>
-        <uri id="Automatically generated entry, Timestamp=1613722607525" name="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/MetadataFNDAccounting/" uri="MetadataFNDAccounting.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1614002649298" name="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/AccountingEquity/" uri="AccountingEquity.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1614002649298" name="duplicate:https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/" uri="Cryptocurrency.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1614002649298" name="duplicate:https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/Cryptocurrency/" uri="Cryptocurrency_Noimports.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1614002649298" name="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/" uri="CurrencyAmount.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1614002649298" name="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/ISO4217-CurrencyCodes/" uri="ISO4217-CurrencyCodes.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1614002649298" name="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/MetadataFNDAccounting/" uri="MetadataFNDAccounting.rdf"/>
     </group>
 </catalog>
