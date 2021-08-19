@@ -58,8 +58,8 @@
 		<dct:abstract>This ontology provides a basic set of definitions related to pricing, yield, and spread that are extended in other instrument-specific ontologies.</dct:abstract>
 		<dct:license rdf:datatype="&xsd;anyURI">http://opensource.org/licenses/MIT</dct:license>
 		<sm:contentLanguage rdf:datatype="&xsd;anyURI">https://www.w3.org/TR/owl2-quick-reference/</sm:contentLanguage>
-		<sm:copyright>Copyright (c) 2021 EDM Council, Inc.</sm:copyright>
-		<sm:copyright>Copyright (c) 2021 Object Management Group, Inc.</sm:copyright>
+		<sm:copyright>Copyright (c) 2020-2021 EDM Council, Inc.</sm:copyright>
+		<sm:copyright>Copyright (c) 2020-2021 Object Management Group, Inc.</sm:copyright>
 		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://spec.edmcouncil.org/fibo/ontology/BE/</sm:dependsOn>
 		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/</sm:dependsOn>
 		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/Markets/</sm:dependsOn>
@@ -85,10 +85,11 @@
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/"/>
-		<owl:versionIRI rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FBC/20210201/FinancialInstruments/InstrumentPricing/"/>
+		<owl:versionIRI rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FBC/20210601/FinancialInstruments/InstrumentPricing/"/>
 		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/FBC/20200601/FinancialInstruments/InstrumentPricing.rdf version of this ontology was modified to reflect the move of dated collection from arrangements to financial dates.</skos:changeNote>
 		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/FBC/20200701/FinancialInstruments/InstrumentPricing.rdf version of this ontology was modified to add trading day and trading session, to address ambiguity in some definitions, to add adjusted price and to create a more general hasLotSize property that can be used in various contexts.</skos:changeNote>
-		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/FBC/20201201/FinancialInstruments/InstrumentPricing.rdf version of this ontology was modified to replace a redundant concept, calculation formula with formula and add a general price determination class needed for options.</skos:changeNote>
+		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/FBC/20201201/FinancialInstruments/InstrumentPricing.rdf version of this ontology was modified to replace a redundant concept, calculation formula with formula, add a general price determination class needed for options, add a restriction on SecurityPrice to point to the security, and add hasRoundLotSize.</skos:changeNote>
+		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/FBC/20210301/FinancialInstruments/InstrumentPricing.rdf version of this ontology was modified to change one of the subclasses of price determination method to a named individual and correct the definition of mean price determination. Note that there may be multiple individuals of type &apos;closing price determination method&apos;, depending on the exchange and other factors. Also revised the lot size properties to have a range of xsd:decimal to allow for fractional shares or number of elements, revised the explanatory note, and added examples.</skos:changeNote>
 		<fibo-fnd-utl-av:hasMaturityLevel rdf:resource="&fibo-fnd-utl-av;Release"/>
 	</owl:Ontology>
 	
@@ -262,9 +263,9 @@
 	</owl:Class>
 	
 	<owl:NamedIndividual rdf:about="&fibo-fbc-fi-ip;MeanPriceDetermination">
-		<rdfs:subClassOf rdf:resource="&fibo-fbc-fi-ip;PriceDeterminationMethod"/>
+		<rdf:type rdf:resource="&fibo-fbc-fi-ip;PriceDeterminationMethod"/>
 		<rdfs:label xml:lang="en">mean price determination</rdfs:label>
-		<skos:definition xml:lang="en">method for determining a closing price that represents the arithmetic mean of some set of prices consolidated across sources</skos:definition>
+		<skos:definition xml:lang="en">method for determining a price that represents the arithmetic mean of some set of prices consolidated across sources</skos:definition>
 	</owl:NamedIndividual>
 	
 	<owl:Class rdf:about="&fibo-fbc-fi-ip;MidPrice">
@@ -275,12 +276,6 @@
 				<owl:onProperty rdf:resource="&fibo-fnd-acc-cur;hasCurrency"/>
 				<owl:onClass rdf:resource="&fibo-fnd-acc-cur;Currency"/>
 				<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;refersTo"/>
-				<owl:someValuesFrom rdf:resource="&fibo-fbc-fi-fi;Security"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
@@ -341,6 +336,12 @@
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;appliesTo"/>
 				<owl:someValuesFrom rdf:resource="&fibo-fbc-fi-ip;CollectionOfSecurityPrices"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;refersTo"/>
+				<owl:someValuesFrom rdf:resource="&fibo-fbc-fi-fi;Security"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
@@ -434,6 +435,12 @@
 				<owl:onDataRange rdf:resource="&fibo-fnd-dt-fd;CombinedDateTime"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-acc-cur;isPriceFor"/>
+				<owl:someValuesFrom rdf:resource="&fibo-fbc-fi-fi;Security"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en">security price</rdfs:label>
 		<skos:definition xml:lang="en">monetary price for a financial instrument at some point in time</skos:definition>
 		<fibo-fnd-utl-av:explanatoryNote xml:lang="en">A security price may be the price that some party is willing to pay, has recently paid, or would like to be paid, depending on the circumstances.</fibo-fnd-utl-av:explanatoryNote>
@@ -494,12 +501,6 @@
 	
 	<owl:Class rdf:about="&fibo-fbc-fi-ip;VolumeWeightedAveragePrice">
 		<rdfs:subClassOf rdf:resource="&fibo-fbc-fi-ip;PriceAnalytic"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;refersTo"/>
-				<owl:someValuesFrom rdf:resource="&fibo-fbc-fi-fi;Security"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en">volume-weighted average price</rdfs:label>
 		<skos:definition xml:lang="en">average price at which a given security has traded throughout a trading day, determined by multiplying each trade by its volume, adding the results, then dividing by the volume traded for the day</skos:definition>
 		<fibo-fnd-utl-av:abbreviation xml:lang="en">VWAP</fibo-fnd-utl-av:abbreviation>
@@ -507,12 +508,6 @@
 	
 	<owl:Class rdf:about="&fibo-fbc-fi-ip;VolumeWeightedOpenPrice">
 		<rdfs:subClassOf rdf:resource="&fibo-fbc-fi-ip;PriceAnalytic"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;refersTo"/>
-				<owl:someValuesFrom rdf:resource="&fibo-fbc-fi-fi;Security"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en">volume-weighted open price</rdfs:label>
 		<skos:definition xml:lang="en">price determined by multiplying each trade by its volume, adding the results, then dividing by the volume over a certain period during the trading day (rather than over the course of the entire day)</skos:definition>
 		<fibo-fnd-utl-av:abbreviation xml:lang="en">VWOP</fibo-fnd-utl-av:abbreviation>
@@ -577,9 +572,10 @@
 	<owl:DatatypeProperty rdf:about="&fibo-fbc-fi-ip;hasLotSize">
 		<rdfs:subPropertyOf rdf:resource="&fibo-fnd-qt-qtu;hasNumericValue"/>
 		<rdfs:label xml:lang="en">has lot size</rdfs:label>
-		<rdfs:range rdf:resource="&xsd;positiveInteger"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
 		<skos:definition xml:lang="en">magnitude of an item (i.e., total quantity)</skos:definition>
-		<fibo-fnd-utl-av:explanatoryNote xml:lang="en">The lot size, referenced in offerings, listings, orders, and trades, typically refers to the number of shares or units. In options trading, lot size represents the total number of contracts contained in one derivative security.</fibo-fnd-utl-av:explanatoryNote>
+		<skos:example xml:lang="en">For example, with respect to corn, 5000 bushels is a typical contract size. For some oil commodities trades, 1000 barrels is considered a single contract. For equity options, the lot size is typically 100 shares of the underlying.</skos:example>
+		<fibo-fnd-utl-av:explanatoryNote xml:lang="en">The lot size, referenced in offerings, listings, orders, and trades, typically refers to the number of shares or units in a single contract.</fibo-fnd-utl-av:explanatoryNote>
 	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&fibo-fbc-fi-ip;hasPriceDeterminationMethod">
@@ -599,7 +595,7 @@
 		<rdfs:subPropertyOf rdf:resource="&fibo-fbc-fi-ip;hasLotSize"/>
 		<rdfs:label xml:lang="en">has quote lot size</rdfs:label>
 		<rdfs:domain rdf:resource="&fibo-fbc-fi-ip;SecurityPrice"/>
-		<rdfs:range rdf:resource="&xsd;positiveInteger"/>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
 		<skos:definition xml:lang="en">magnitude of something to which the quote price refers</skos:definition>
 	</owl:DatatypeProperty>
 	
@@ -610,6 +606,16 @@
 		<rdfs:range rdf:resource="&fibo-fbc-fi-ip;RateOfReturn"/>
 		<skos:definition xml:lang="en">indicates the retrospective rate of return for a given financial instrument over some period of time</skos:definition>
 	</owl:ObjectProperty>
+	
+	<owl:DatatypeProperty rdf:about="&fibo-fbc-fi-ip;hasRoundLotSize">
+		<rdfs:subPropertyOf rdf:resource="&fibo-fbc-fi-ip;hasLotSize"/>
+		<rdfs:label xml:lang="en">has round lot size</rdfs:label>
+		<rdfs:range rdf:resource="&xsd;decimal"/>
+		<skos:definition xml:lang="en">standard number of securities traded on an exchange</skos:definition>
+		<fibo-fnd-utl-av:explanatoryNote xml:lang="en">In stocks, a round lot is considered 100 shares or a larger number that can be evenly divided by 100. In bonds, a round lot is usually $100,000 worth. Odd lots and smaller lots have become increasingly common due to technology advances and small investor demand.</fibo-fnd-utl-av:explanatoryNote>
+		<fibo-fnd-utl-av:synonym xml:lang="en">normal trading unit</fibo-fnd-utl-av:synonym>
+		<fibo-fnd-utl-av:synonym xml:lang="en">unit of trading</fibo-fnd-utl-av:synonym>
+	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&fibo-fbc-fi-ip;hasTradingDateTime">
 		<rdfs:subPropertyOf rdf:resource="&fibo-fnd-dt-fd;hasDateTime"/>

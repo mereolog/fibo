@@ -2,6 +2,7 @@
 <!DOCTYPE rdf:RDF [
 	<!ENTITY dct "http://purl.org/dc/terms/">
 	<!ENTITY fibo-be-fct-fct "https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/">
+	<!ENTITY fibo-be-ge-euj "https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/EUGovernmentEntitiesAndJurisdictions/">
 	<!ENTITY fibo-be-le-cb "https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/CorporateBodies/">
 	<!ENTITY fibo-be-le-fbo "https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/">
 	<!ENTITY fibo-be-le-lp "https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/">
@@ -26,6 +27,7 @@
 	<!ENTITY fibo-fnd-law-jur "https://spec.edmcouncil.org/fibo/ontology/FND/Law/Jurisdiction/">
 	<!ENTITY fibo-fnd-law-lcap "https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/">
 	<!ENTITY fibo-fnd-oac-own "https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/">
+	<!ENTITY fibo-fnd-org-org "https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/Organizations/">
 	<!ENTITY fibo-fnd-pty-pty "https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/">
 	<!ENTITY fibo-fnd-pty-rl "https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Roles/">
 	<!ENTITY fibo-fnd-rel-rel "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/">
@@ -51,6 +53,7 @@
 <rdf:RDF xml:base="https://spec.edmcouncil.org/fibo/ontology/SEC/Funds/CollectiveInvestmentVehicles/"
 	xmlns:dct="http://purl.org/dc/terms/"
 	xmlns:fibo-be-fct-fct="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/"
+	xmlns:fibo-be-ge-euj="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/EUGovernmentEntitiesAndJurisdictions/"
 	xmlns:fibo-be-le-cb="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/CorporateBodies/"
 	xmlns:fibo-be-le-fbo="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/"
 	xmlns:fibo-be-le-lp="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/"
@@ -75,6 +78,7 @@
 	xmlns:fibo-fnd-law-jur="https://spec.edmcouncil.org/fibo/ontology/FND/Law/Jurisdiction/"
 	xmlns:fibo-fnd-law-lcap="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/"
 	xmlns:fibo-fnd-oac-own="https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/"
+	xmlns:fibo-fnd-org-org="https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/Organizations/"
 	xmlns:fibo-fnd-pty-pty="https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/"
 	xmlns:fibo-fnd-pty-rl="https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Roles/"
 	xmlns:fibo-fnd-rel-rel="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/"
@@ -111,6 +115,7 @@
 		<sm:fileAbbreviation>fibo-sec-fund-civ</sm:fileAbbreviation>
 		<sm:filename>CollectiveInvestmentVehicles.rdf</sm:filename>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/FunctionalEntities/FunctionalEntities/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/GovernmentEntities/EuropeanJurisdiction/EUGovernmentEntitiesAndJurisdictions/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/CorporateBodies/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/"/>
@@ -134,6 +139,7 @@
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Law/Jurisdiction/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCapacity/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Law/LegalCore/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Organizations/Organizations/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Roles/"/>
@@ -424,18 +430,6 @@
 		<skos:definition xml:lang="en">Terms for the expected distributions of dividends.</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&fibo-sec-fund-civ;FundEquity">
-		<rdfs:subClassOf rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/Pools/PoolEquity"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-fnd-acc-aeq;representsAnInterestIn"/>
-				<owl:someValuesFrom rdf:resource="&fibo-sec-fund-fund;CollectiveInvestmentVehicle"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label xml:lang="en">fund equity</rdfs:label>
-		<skos:definition xml:lang="en">A share or proportion of the capital gains in a fund.</skos:definition>
-	</owl:Class>
-	
 	<owl:Class rdf:about="&fibo-sec-fund-civ;FundInvestmentObjective">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-gao-obj;InvestmentObjective"/>
 		<rdfs:subClassOf>
@@ -700,41 +694,16 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&fibo-sec-fund-civ;FundShareClassUnit">
-		<rdfs:subClassOf rdf:resource="&fibo-fbc-fi-fi;EquityInstrument"/>
 		<rdfs:subClassOf rdf:resource="&fibo-sec-fund-fund;FundUnit"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-sec-fund-civ;confersOwnershipOf"/>
-				<owl:someValuesFrom rdf:resource="&fibo-sec-fund-civ;FundEquity"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-sec-fund-civ;hasDistributionPolicy"/>
 				<owl:someValuesFrom rdf:resource="&fibo-sec-fund-civ;FundUnitDistributionPolicy"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-sec-fund-civ;hasExpectedDividend"/>
-				<owl:someValuesFrom rdf:resource="&fibo-sec-fund-civ;FundShareClassUnitDividend"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en">fund share class unit</rdfs:label>
 		<skos:definition xml:lang="en">The legal structure in which you can purchase part of an investment pool, defined by a variety of characteristics like investor type, minimum size of investment, distribution type, fee and currency. A fund unit which gives the holder an equity stake in the fund.</skos:definition>
 		<fibo-fnd-utl-av:explanatoryNote xml:lang="en">From review sessions: Theoretically you can buy a fraction of a share in a fund. This would depend on the legal structure of the fund, e.g. a minimum investment. There is always a distribution plan.</fibo-fnd-utl-av:explanatoryNote>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&fibo-sec-fund-civ;FundShareClassUnitDividend">
-		<rdfs:subClassOf rdf:resource="&fibo-sec-eq-eq;Dividend"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-sec-fund-civ;hasPolicyTerms.1"/>
-				<owl:someValuesFrom rdf:resource="&fibo-sec-fund-civ;FundDividendPolicy"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label xml:lang="en">fund share class unit dividend</rdfs:label>
-		<skos:definition xml:lang="en">Expected dividend payment from a Fund Unit. REVIEW: Does this apply to the Fund as a whole or to a unit in the fund? This term will be redefined following the Funds model restructuring</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&fibo-sec-fund-civ;FundSubscriptionTerms">
@@ -927,6 +896,27 @@
 		<skos:definition xml:lang="en">Strategy which is jurisdiction based.</skos:definition>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&fibo-sec-fund-civ;KeyInvestorInformationDocument">
+		<rdfs:subClassOf rdf:resource="&fibo-sec-sec-iss;OfferingDocument"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-law-jur;appliesIn"/>
+				<owl:hasValue rdf:resource="&fibo-be-ge-euj;EuropeanUnionJurisdiction"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;appliesTo"/>
+				<owl:someValuesFrom rdf:resource="&fibo-sec-fund-fund;FundUnit"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>key investor information document</rdfs:label>
+		<skos:definition>short document that provides critical information for investors, summarizing content derived from a prospectus such that it can be understood by investors without reference to other documents, as required by law in the European Union</skos:definition>
+		<fibo-fnd-utl-av:abbreviation>KIID</fibo-fnd-utl-av:abbreviation>
+		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://eur-lex.europa.eu/eli/dir/2009/65/2020-01-07</fibo-fnd-utl-av:adaptedFrom>
+		<fibo-fnd-utl-av:explanatoryNote>Key investor information shall include appropriate information about the essential characteristics of the UCITS concerned, which is to be provided to investors so that they are reasonably able to understand the nature and the risks of the investment product that is being offered to them and, consequently, to take investment decisions on an informed basis.</fibo-fnd-utl-av:explanatoryNote>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&fibo-sec-fund-civ;Liquidity">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-oac-own;Asset"/>
 		<rdfs:subClassOf>
@@ -1022,7 +1012,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&fibo-sec-fund-civ;PortfolioManager">
-		<rdfs:subClassOf rdf:resource="&fibo-fnd-pty-pty;OrganizationMember"/>
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-org-org;OrganizationMember"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-fnd-pty-rl;isPlayedBy"/>
@@ -1234,12 +1224,6 @@
 		<skos:definition xml:lang="en">Whether cleared funds may be required before a subscription order can be executed.</skos:definition>
 	</owl:DatatypeProperty>
 	
-	<owl:ObjectProperty rdf:about="&fibo-sec-fund-civ;confersOwnershipOf">
-		<rdfs:label xml:lang="en">confers ownership of</rdfs:label>
-		<rdfs:domain rdf:resource="&fibo-sec-fund-civ;FundShareClassUnit"/>
-		<rdfs:range rdf:resource="&fibo-sec-fund-civ;FundEquity"/>
-	</owl:ObjectProperty>
-	
 	<owl:ObjectProperty rdf:about="&fibo-sec-fund-civ;couponPaymentDate">
 		<rdfs:label xml:lang="en">coupon payment date</rdfs:label>
 		<rdfs:domain rdf:resource="&fibo-sec-fund-civ;FundCouponPolicy"/>
@@ -1347,20 +1331,6 @@
 		<skos:definition xml:lang="en">It is possible to hold shares for which the accrued income is distributed, but then reinvested automatically in additional units/shares allocated to the investor.</skos:definition>
 	</owl:DatatypeProperty>
 	
-	<owl:ObjectProperty rdf:about="&fibo-sec-fund-civ;dividendPaymentDate">
-		<rdfs:label xml:lang="en">dividend payment date</rdfs:label>
-		<rdfs:domain rdf:resource="&fibo-sec-fund-civ;FundDividendPolicy"/>
-		<rdfs:range rdf:resource="&fibo-fnd-dt-bd;DayOfMonth"/>
-		<skos:definition xml:lang="en">Day and month on which the dividends would normally be paid.</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&fibo-sec-fund-civ;dividendPaymentFrequency">
-		<rdfs:label xml:lang="en">dividend payment frequency</rdfs:label>
-		<rdfs:domain rdf:resource="&fibo-sec-fund-civ;FundDividendPolicy"/>
-		<rdfs:range rdf:resource="&fibo-fnd-dt-fd;RecurrenceInterval"/>
-		<skos:definition xml:lang="en">The frequency with which income is allocated (or deemed to be allocated) to investors (eg. six-monthly, yearly, etc).</skos:definition>
-	</owl:ObjectProperty>
-	
 	<owl:DatatypeProperty rdf:about="&fibo-sec-fund-civ;dualFund">
 		<rdfs:label xml:lang="en">dual fund</rdfs:label>
 		<rdfs:domain rdf:resource="&fibo-sec-fund-civ;FundProcessingGeneralTerms"/>
@@ -1380,13 +1350,6 @@
 		<rdfs:domain rdf:resource="&fibo-sec-fund-civ;FundCouponPolicy"/>
 		<rdfs:range rdf:resource="&fibo-fnd-dt-bd;DayOfMonth"/>
 		<skos:definition xml:lang="en">The date at which the coupon is substracted from the NAV</skos:definition>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&fibo-sec-fund-civ;exDivDate">
-		<rdfs:label xml:lang="en">ex div date</rdfs:label>
-		<rdfs:domain rdf:resource="&fibo-sec-fund-civ;FundDividendPolicy"/>
-		<rdfs:range rdf:resource="&fibo-fnd-dt-bd;DayOfMonth"/>
-		<skos:definition xml:lang="en">The date at which the dividend is substracted from the NAV</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:DatatypeProperty rdf:about="&fibo-sec-fund-civ;firstAccountingYearEndDate">
@@ -1416,7 +1379,6 @@
 	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&fibo-sec-fund-civ;fundHasRelatedParty">
-		<rdfs:subPropertyOf rdf:resource="&fibo-fnd-pty-pty;hasRelatedPartyInRole"/>
 		<rdfs:label xml:lang="en">fund has related party</rdfs:label>
 		<rdfs:domain rdf:resource="&fibo-sec-fund-fund;CollectiveInvestmentVehicle"/>
 		<rdfs:range rdf:resource="&fibo-sec-fund-civ;FundsProcessingParty"/>
@@ -1532,20 +1494,6 @@
 		<rdfs:range rdf:resource="&fibo-sec-fund-civ;FundBondUnitCoupon"/>
 	</owl:ObjectProperty>
 	
-	<owl:ObjectProperty rdf:about="&fibo-sec-fund-civ;hasExpectedDividend">
-		<rdfs:label xml:lang="en">has expected dividend</rdfs:label>
-		<rdfs:domain rdf:resource="&fibo-sec-fund-civ;FundShareClassUnit"/>
-		<rdfs:range rdf:resource="&fibo-sec-fund-civ;FundShareClassUnitDividend"/>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&fibo-sec-fund-civ;hasFundIdentification">
-		<rdfs:subPropertyOf rdf:resource="&lcc-lr;isIdentifiedBy"/>
-		<rdfs:label xml:lang="en">has fund identification</rdfs:label>
-		<rdfs:domain rdf:resource="&fibo-sec-fund-fund;CollectiveInvestmentVehicle"/>
-		<rdfs:range rdf:resource="&fibo-be-le-fbo;OrganizationIdentifier"/>
-		<skos:definition xml:lang="en">Identification of the investment fund. Note this relationship has no parent, and is a sibling to the identifiaciton relationship for Incorporated Company. As BEI work progresses, these should both have a parent relationship for all legal entitity identification.</skos:definition>
-	</owl:ObjectProperty>
-	
 	<owl:ObjectProperty rdf:about="&fibo-sec-fund-civ;hasFundPolicy">
 		<rdfs:label xml:lang="en">has fund policy</rdfs:label>
 		<rdfs:domain rdf:resource="&fibo-sec-fund-fund;CollectiveInvestmentVehicle"/>
@@ -1608,13 +1556,6 @@
 		<rdfs:label xml:lang="en">has policy terms</rdfs:label>
 		<rdfs:domain rdf:resource="&fibo-sec-fund-civ;FundBondUnitCoupon"/>
 		<rdfs:range rdf:resource="&fibo-sec-fund-civ;FundCouponPolicy"/>
-	</owl:ObjectProperty>
-	
-	<owl:ObjectProperty rdf:about="&fibo-sec-fund-civ;hasPolicyTerms.1">
-		<rdfs:label xml:lang="en">has policy terms</rdfs:label>
-		<rdfs:domain rdf:resource="&fibo-sec-fund-civ;FundShareClassUnitDividend"/>
-		<rdfs:range rdf:resource="&fibo-sec-fund-civ;FundDividendPolicy"/>
-		<skos:definition xml:lang="en">Terms for the expected distributions of dividends.</skos:definition>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&fibo-sec-fund-civ;hasPortfolio">
@@ -2365,12 +2306,6 @@
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-sec-fund-civ;hasFundIdentification"/>
-				<owl:someValuesFrom rdf:resource="&fibo-be-le-fbo;OrganizationIdentifier"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-sec-fund-civ;hasFundPolicy"/>
 				<owl:someValuesFrom rdf:resource="&fibo-sec-fund-civ;FundInvestmentPolicy"/>
 			</owl:Restriction>
@@ -2445,18 +2380,6 @@
 	<owl:Class rdf:about="&fibo-sec-fund-fund;FundUnit">
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-fbc-fi-fi;isLegallyRecordedIn"/>
-				<owl:someValuesFrom rdf:resource="&fibo-fnd-law-jur;Jurisdiction"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-sec-fund-civ;denominationCurrency"/>
-				<owl:someValuesFrom rdf:resource="&fibo-fnd-acc-cur;Currency"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-sec-fund-civ;hasDetails"/>
 				<owl:someValuesFrom rdf:resource="&fibo-sec-fund-civ;NetAssetValueCalculationMethod"/>
 			</owl:Restriction>
@@ -2473,14 +2396,6 @@
 				<owl:someValuesFrom rdf:resource="&fibo-sec-fund-civ;FundRedemptionTerms"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;isIdentifiedBy"/>
-				<owl:someValuesFrom rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIdentification/SecurityIdentifier"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label xml:lang="en">fund unit</rdfs:label>
-		<skos:definition xml:lang="en">A unit in a fund, which may be traded and is a contract between the fund and the holder of that unit.</skos:definition>
 		<fibo-fnd-utl-av:explanatoryNote xml:lang="en">If it is a closed fund, you can still trade the units. You trade back with the fund. Not with a counterparty. Therefore this is a tradable contract, though it may not necessarily be a transferable contract.</fibo-fnd-utl-av:explanatoryNote>
 	</owl:Class>
 	

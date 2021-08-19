@@ -74,13 +74,6 @@ There are many possible ways to participate in the FIBO project. It really depen
 * Provide test data for the use cases.
 * When the FIBO is ready for the Release Maturity Level, build the required publication documentation.
 
-## FIBO website
-
-* Help [improving the FIBO website](#fibo-vue-website)
-* Conduct user research to reorganize and refine the project's navigation or menus
-* Put together a style guide to help the project have a consistent visual design
-* Create nice graphics
-* Suggest improvements in [FIBO Viewer](https://spec.edmcouncil.org/fibo/ontology/). 
 
 
 # FIBO Content Teams
@@ -165,12 +158,14 @@ The FIBO sources are kept in this repository on GitHub. As is customary with Git
 **You will need a GitHub user name to participate in the development process**. 
 
 ### Issues
-[Create an issue](https://github.com/edmcouncil/fibo/issues/new/choose) if you would like to 
+[Create an issue](https://github.com/edmcouncil/fibo/issues/new/choose) if you would like to report a problem or a bug concerning FIBO.
 
-* suggest an idea for FIBO extension, FIBO documentation or website improvement,
-* report a problem or a bug,
-* ask a question about FIBO or
-* announce your FIBO Content Team to get more attendees.
+### Discussions
+[Create a new discussion](https://github.com/edmcouncil/fibo/discussions) if you would like to 
+
+* announce your FIBO Content Team to get more attendees,
+* ask a question about FIBO,
+* suggest an idea for FIBO extension or FIBO documentation.
 
 
 ### Pull Requests
@@ -200,7 +195,7 @@ You only have to do steps 1-5 once. Once you have begun contributing, you just r
 
 #### Who can accept pull requests?
 
-* Pull requests can be accepted only by the members of [FIBO Core Write Team](https://github.com/orgs/edmcouncil/teams/fibo-core-write-team) who have “Write” permission.
+* Pull requests can be accepted only by the members of [FIBO Core Write Team](https://github.com/orgs/edmcouncil/teams/fibo-core-write-team/members) who have “Write” permission.
 
 ## Developer Certificate of Origin
 
@@ -221,8 +216,8 @@ When you cloned your fork to your local repository, you chose a directory in whi
 * In your FIBO installation directory, there is a directory called ".git", and a folder in there called "hooks".  This folder should have been created for you when you cloned the repository; if not, you can initialize your repository from the Git command line by changing directory to your fibo installation directory and typing: git init
 * The Git command line can be run from within the SourceTree tool by selecting "Open in terminal" from the Actions menu. Alternatively, you may set up a Git shell environment – see separate page 'Setting up the Git Shell' for details.
 * Running the initialization command should ensure that your .git environment exists and that it includes the /hooks directory. This does not automatically install or update the two files that you need to have in place for the Serializer to work. These are: 
-    * pre-commit (no file extension)
-    * rdf-toolkit.jar
+    * [pre-commit](https://github.com/edmcouncil/rdf-toolkit/raw/master/etc/git-hook/pre-commit) (no file extension)
+    * [rdf-toolkit.jar](https://jenkins.edmcouncil.org/view/rdf-toolkit/job/rdf-toolkit-build/lastSuccessfulBuild/artifact/target/rdf-toolkit.jar)
 * These files are updated from time to time so it is recommended that you re-download these directly from the links below before proceeding.
 * Copy the file pre-commit to your hooks directory (use right-click on the link and select the save option).  Make sure that the name of the file is just pre-commit; your browser might want to append a suffix like .txt to it. 
 * Edit this pre-commit file to point to your Java JRE/JDK. To do this, open the pre-commit file in a text editor and search for "JAVA\_HOME". Edit the directory after JAVA\_HOME= to point to the location of your Java 8 (a.k.a version 1.8) or higher JRE/JDK, and save it. 
@@ -279,8 +274,8 @@ Principles of best practices for FIBO have been collected in a separate file cal
 # FIBO Vue website 
 <img src="https://vuejs.org/images/logo.png" width="50" align="right"/>
 
-The FIBO Vue application sources are located in FIBO main repository. Please consult the [README.md](./etc/fibo-vue/README.md) file to learn how to update the FIBO website.
+The FIBO Vue application sources are located in [edmcouncil/html-pages](https://github.com/edmcouncil/html-pages) repository.
 
 
 # Code of conduct
-This project adheres to the Contributor Covenant [code of conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [fibo@edmcouncil.org](mailto:fibo@edmcouncil.org). 
+This project adheres to the Contributor Covenant [code of conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [fibo@edmcouncil.org](mailto:fibo@edmcouncil.org).

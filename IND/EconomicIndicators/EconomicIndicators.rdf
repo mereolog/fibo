@@ -117,7 +117,7 @@
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/IND/Indicators/Indicators/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/"/>
-		<owl:versionIRI rdf:resource="https://spec.edmcouncil.org/fibo/ontology/IND/20211201/EconomicIndicators/EconomicIndicators/"/>
+		<owl:versionIRI rdf:resource="https://spec.edmcouncil.org/fibo/ontology/IND/20210601/EconomicIndicators/EconomicIndicators/"/>
 		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/IND/20140601/EconomicIndicators/EconomicIndicators.rdf version of this ontology was modified per the issue resolutions identified in the FIBO IND 1.0 FTF 1 report.</skos:changeNote>
 		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/IND/20150501/EconomicIndicators/EconomicIndicators.rdf version of this ontology was modified per the issue resolutions identified in the FIBO IND 1.0 FTF 3 report.</skos:changeNote>
 		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/IND/20160801/EconomicIndicators/EconomicIndicators.rdf version of this ontology was modified per the FIBO 2.0 RFC. Primary changes include the addition of a number of statistical measures (mean, total, etc.) and their use in existing and new indicators, and the addition of several more economic indicators.</skos:changeNote>
@@ -127,7 +127,8 @@
 		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/IND/20190901/EconomicIndicators/EconomicIndicators.rdf version of this ontology was modified to eliminate duplicatation with concepts in LCC and merge countries with locations in FND.</skos:changeNote>
 		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/IND/20200301/EconomicIndicators/EconomicIndicators.rdf version of this ontology was modified to reflect the change in name and definition of numeric index to numeric index value in FND.</skos:changeNote>
 		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/IND/20200401/EconomicIndicators/EconomicIndicators.rdf version of this ontology was modified to add definitions for alternative unemployment calculations and correct a circular property definition.</skos:changeNote>
-		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/IND/20200901/EconomicIndicators/EconomicIndicators.rdf version of this ontology was modified to eliminate references to external dictionary sites that no longer resolve.</skos:changeNote>
+		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/IND/20200901/EconomicIndicators/EconomicIndicators.rdf version of this ontology was modified to eliminate references to external dictionary sites that no longer resolve, added a synonym to fixed basket and eliminated the restriction with respect to date period, which is not the primary concern of a fixed basket, revised the name of the &apos;goods or services population&apos; to &apos;goods population&apos; to eliminate a hygiene issue and reflect the synonym of &apos;basket of goods&apos;, and merged the statistical information publisher class from economic indicator publishers into this ontology.</skos:changeNote>
+		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/IND/20210301/EconomicIndicators/EconomicIndicators.rdf version of this ontology was modified to eliminate the restriction on economic indicator (and its subclasses) that it has an indicator value - the restriction should be on the quantity value such that the value refers to the indicator it represents, and to revise the definition of civilian non-institutional population to correctly represent civilian non-institutional person (added).</skos:changeNote>
 		<fibo-fnd-utl-av:hasMaturityLevel rdf:resource="&fibo-fnd-utl-av;Release"/>
 	</owl:Ontology>
 	
@@ -137,21 +138,6 @@
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-fnd-utl-alx;hasReferencePeriod"/>
 				<owl:hasValue rdf:resource="&fibo-ind-ei-ei;Daily"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-ind-ei-ei;hasIndicatorValue"/>
-				<owl:someValuesFrom>
-					<owl:Class>
-						<owl:unionOf rdf:parseType="Collection">
-							<rdf:Description rdf:about="&fibo-fnd-utl-alx;ArithmeticMean">
-							</rdf:Description>
-							<rdf:Description rdf:about="&fibo-fnd-acc-cur;MonetaryAmount">
-							</rdf:Description>
-						</owl:unionOf>
-					</owl:Class>
-				</owl:someValuesFrom>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>average daily earnings</rdfs:label>
@@ -183,21 +169,6 @@
 				<owl:hasValue rdf:resource="&fibo-ind-ei-ei;Hourly"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-ind-ei-ei;hasIndicatorValue"/>
-				<owl:someValuesFrom>
-					<owl:Class>
-						<owl:unionOf rdf:parseType="Collection">
-							<rdf:Description rdf:about="&fibo-fnd-utl-alx;ArithmeticMean">
-							</rdf:Description>
-							<rdf:Description rdf:about="&fibo-fnd-acc-cur;MonetaryAmount">
-							</rdf:Description>
-						</owl:unionOf>
-					</owl:Class>
-				</owl:someValuesFrom>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label>average hourly earnings</rdfs:label>
 		<skos:definition>a measure of the average hourly wage an employee makes over the reporting period</skos:definition>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">http://stats.oecd.org/glossary/detail.asp?ID=4360</fibo-fnd-utl-av:adaptedFrom>
@@ -211,21 +182,6 @@
 				<owl:hasValue rdf:resource="&fibo-ind-ei-ei;Monthly"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-ind-ei-ei;hasIndicatorValue"/>
-				<owl:someValuesFrom>
-					<owl:Class>
-						<owl:unionOf rdf:parseType="Collection">
-							<rdf:Description rdf:about="&fibo-fnd-utl-alx;ArithmeticMean">
-							</rdf:Description>
-							<rdf:Description rdf:about="&fibo-fnd-acc-cur;MonetaryAmount">
-							</rdf:Description>
-						</owl:unionOf>
-					</owl:Class>
-				</owl:someValuesFrom>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label>average monthly earnings</rdfs:label>
 		<skos:definition>a measure of the average monthly wage an employee makes over the reporting period</skos:definition>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">http://stats.oecd.org/glossary/detail.asp?ID=4360</fibo-fnd-utl-av:adaptedFrom>
@@ -237,21 +193,6 @@
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-fnd-utl-alx;hasReferencePeriod"/>
 				<owl:hasValue rdf:resource="&fibo-ind-ei-ei;Weekly"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-ind-ei-ei;hasIndicatorValue"/>
-				<owl:someValuesFrom>
-					<owl:Class>
-						<owl:unionOf rdf:parseType="Collection">
-							<rdf:Description rdf:about="&fibo-fnd-utl-alx;ArithmeticMean">
-							</rdf:Description>
-							<rdf:Description rdf:about="&fibo-fnd-acc-cur;MonetaryAmount">
-							</rdf:Description>
-						</owl:unionOf>
-					</owl:Class>
-				</owl:someValuesFrom>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>average weekly earnings</rdfs:label>
@@ -297,7 +238,7 @@
 		<rdfs:subClassOf rdf:resource="&fibo-ind-ei-ei;CivilianNonInstitutionalPopulation"/>
 		<rdfs:label>civilian labor force</rdfs:label>
 		<owl:disjointWith rdf:resource="&fibo-ind-ei-ei;PopulationNotInLaborForce"/>
-		<skos:definition>a subset of the civilian, non-institutional population considered to be part of the labor force during a given reporting period</skos:definition>
+		<skos:definition>subset of the civilian, non-institutional population considered to be part of the labor force during a given reporting period</skos:definition>
 		<fibo-fnd-utl-av:adaptedFrom>U.S. Bureau of Labor Statistics and Statistics Canada reference definitions - https://wiki.edmcouncil.org/pages/viewpage.action?pageId=6358041</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
 	
@@ -322,12 +263,6 @@
 				<owl:someValuesFrom rdf:resource="&fibo-ind-ei-ei;CivilianNonInstitutionalPopulation"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-ind-ei-ei;hasIndicatorValue"/>
-				<owl:someValuesFrom rdf:resource="&fibo-fnd-utl-alx;RatioValue"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label>civilian labor force participation rate</rdfs:label>
 		<skos:definition>an economic indicator representing the rate of participation the labor force of a given economy for some specified period</skos:definition>
 		<fibo-fnd-utl-alx:actualExpression>civilian labor force ÷ civilian non-institutional population</fibo-fnd-utl-alx:actualExpression>
@@ -335,32 +270,27 @@
 		<fibo-fnd-utl-av:explanatoryNote>The labor force participation rate is the percentage of the population that is either employed or unemployed (that is, either working or actively seeking work).</fibo-fnd-utl-av:explanatoryNote>
 	</owl:Class>
 	
+	<owl:Class rdf:about="&fibo-ind-ei-ei;CivilianNonInstitutionalPerson">
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-aap-ppl;LegalWorkingAgePerson"/>
+		<rdfs:subClassOf rdf:resource="&fibo-ind-ei-ei;Civilian"/>
+		<rdfs:label>civilian non-institutional person</rdfs:label>
+		<rdfs:disjointWith rdf:resource="&fibo-ind-ei-ei;InstitutionalPerson"/>
+		<rdfs:seeAlso rdf:resource="http://www.investopedia.com/terms/w/working-age-population.asp"/>
+		<skos:definition>legal working-age person that does not live in an institution (for example, a correctional facility, long-term care hospital, or nursing home), and is not on active military duty</skos:definition>
+		<fibo-fnd-utl-av:adaptedFrom>U.S. Bureau of Labor Statistics and Statistics Canada reference definitions - https://wiki.edmcouncil.org/pages/viewpage.action?pageId=6358041</fibo-fnd-utl-av:adaptedFrom>
+		<fibo-fnd-utl-av:explanatoryNote>The working-age population is the total population in a region, within a set range of ages, that is considered to be able and likely to work. The working-age population measure is used to give an estimate of the total number of potential workers within an economy. For example, in the U.S., it is 16, whereas in Canada it is 15.</fibo-fnd-utl-av:explanatoryNote>
+	</owl:Class>
+	
 	<owl:Class rdf:about="&fibo-ind-ei-ei;CivilianNonInstitutionalPopulation">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-utl-alx;StatisticalUniverse"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&lcc-lr;hasMember"/>
-				<owl:someValuesFrom>
-					<owl:Class>
-						<owl:intersectionOf rdf:parseType="Collection">
-							<rdf:Description rdf:about="&fibo-ind-ei-ei;Civilian">
-							</rdf:Description>
-							<owl:Restriction>
-								<owl:onProperty rdf:resource="&fibo-ind-ei-ei;hasMinimumLegalWorkingAge"/>
-								<owl:allValuesFrom rdf:resource="&xsd;integer"/>
-							</owl:Restriction>
-							<owl:Restriction>
-								<owl:onProperty rdf:resource="&lcc-lr;hasMember"/>
-								<owl:onClass rdf:resource="&fibo-ind-ei-ei;InstitutionalPerson"/>
-								<owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:qualifiedCardinality>
-							</owl:Restriction>
-						</owl:intersectionOf>
-					</owl:Class>
-				</owl:someValuesFrom>
+				<owl:someValuesFrom rdf:resource="&fibo-ind-ei-ei;CivilianNonInstitutionalPerson"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>civilian non-institutional population</rdfs:label>
-		<skos:definition>a statistical universe consisting of people of a certain age who reside in a given region, do not live in institutions (for example, correctional facilities, long-term care hospitals, and nursing homes), and are not on active military duty</skos:definition>
+		<skos:definition>statistical universe consisting of people of a certain age who reside in a given region, do not live in institutions (for example, correctional facilities, long-term care hospitals, and nursing homes), and are not on active military duty</skos:definition>
 		<skos:scopeNote>The civilian non-institutional population is typically reported in thousands.</skos:scopeNote>
 		<fibo-fnd-utl-av:adaptedFrom>U.S. Bureau of Labor Statistics and Statistics Canada reference definitions - https://wiki.edmcouncil.org/pages/viewpage.action?pageId=6358041</fibo-fnd-utl-av:adaptedFrom>
 	</owl:Class>
@@ -395,19 +325,13 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-fnd-utl-alx;hasArgument"/>
-				<owl:someValuesFrom rdf:resource="&fibo-fbc-pas-fpas;Basket"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-fnd-utl-alx;hasArgument"/>
 				<owl:someValuesFrom rdf:resource="&fibo-ind-ei-ei;CivilianNonInstitutionalPopulation"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-ind-ei-ei;hasIndicatorValue"/>
-				<owl:someValuesFrom rdf:resource="&fibo-fnd-utl-alx;NumericIndexValue"/>
+				<owl:onProperty rdf:resource="&fibo-fnd-utl-alx;hasArgument"/>
+				<owl:someValuesFrom rdf:resource="&fibo-ind-ei-ei;FixedBasket"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>consumer price index</rdfs:label>
@@ -476,14 +400,8 @@
 				<owl:someValuesFrom rdf:resource="&fibo-ind-ei-ei;GovernmentSpecifiedStatisticalArea"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-ind-ei-ei;hasIndicatorValue"/>
-				<owl:someValuesFrom rdf:resource="&fibo-fnd-qt-qtu;QuantityValue"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label>economic indicator</rdfs:label>
-		<skos:definition>a statistical measure of economic activity that is regular and comparable in the context of a statistical area (region), used for analysis of economic performance and predictions of future performance</skos:definition>
+		<skos:definition>statistical measure of economic activity that is regular and comparable in the context of a statistical area (region), used for analysis of economic performance and predictions of future performance</skos:definition>
 		<skos:example>Example indicators include the average work week, weekly claims for unemployment insurance, new orders, vendor performance, stock prices, and changes in the money supply.</skos:example>
 		<fibo-fnd-utl-av:adaptedFrom>Barron&apos;s Dictionary of Business and Economic Terms, Fifth Edition, 2012</fibo-fnd-utl-av:adaptedFrom>
 		<fibo-fnd-utl-av:explanatoryNote>The two main features of any indicator are the regularity with which they are measured and published, and the fact that they are comparable from one release to the next.</fibo-fnd-utl-av:explanatoryNote>
@@ -554,12 +472,6 @@
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-fnd-utl-alx;hasArgument"/>
 				<owl:someValuesFrom rdf:resource="&fibo-ind-ei-ei;EmployedPopulation"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-ind-ei-ei;hasIndicatorValue"/>
-				<owl:someValuesFrom rdf:resource="&fibo-fnd-utl-alx;RatioValue"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>employment-population ratio</rdfs:label>
@@ -671,12 +583,6 @@
 				<owl:someValuesFrom rdf:resource="&fibo-ind-ei-ei;EstablishmentPopulation"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-ind-ei-ei;hasIndicatorValue"/>
-				<owl:someValuesFrom rdf:resource="&fibo-fnd-utl-alx;Total"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label>establishment employment</rdfs:label>
 		<skos:definition>the total number of persons who work in or for the establishment including working proprietors, active business partners and unpaid family workers, as well as persons working outside the establishment when paid by and under the control of the establishment, for example, sales representatives, outside service engineers and repair and maintenance personnel</skos:definition>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">http://stats.oecd.org/glossary/detail.asp?ID=780</fibo-fnd-utl-av:adaptedFrom>
@@ -700,25 +606,22 @@ Excluded are directors of incorporated enterprises and members of shareholders c
 	
 	<owl:Class rdf:about="&fibo-ind-ei-ei;FixedBasket">
 		<rdfs:subClassOf rdf:resource="&fibo-fbc-pas-fpas;Basket"/>
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-dt-fd;DatedStructuredCollection"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-fnd-arr-arr;hasConstituent"/>
 				<owl:someValuesFrom rdf:resource="&fibo-ind-ei-ei;FixedBasketConstituent"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-fnd-dt-fd;hasDatePeriod"/>
-				<owl:someValuesFrom rdf:resource="&fibo-fnd-dt-fd;DatePeriod"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label>fixed basket</rdfs:label>
-		<skos:definition>a basket of goods and services whose quantity and quality are held fixed for some period of time</skos:definition>
+		<skos:definition>basket of goods and services whose quantity and quality are held fixed for some period of time</skos:definition>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.imf.org/external/pubs/ft/ppi/2010/manual/ppi.pdf</fibo-fnd-utl-av:adaptedFrom>
+		<fibo-fnd-utl-av:synonym>basket of goods</fibo-fnd-utl-av:synonym>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&fibo-ind-ei-ei;FixedBasketConstituent">
 		<rdfs:subClassOf rdf:resource="&fibo-fbc-pas-fpas;BasketConstituent"/>
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-dt-fd;DatedCollectionConstituent"/>
 		<rdfs:subClassOf>
 			<owl:Class>
 				<owl:unionOf rdf:parseType="Collection">
@@ -739,7 +642,7 @@ Excluded are directors of incorporated enterprises and members of shareholders c
 		<skos:definition>component of a fixed basket</skos:definition>
 	</owl:Class>
 	
-	<owl:Class rdf:about="&fibo-ind-ei-ei;GoodsOrServicesPopulation">
+	<owl:Class rdf:about="&fibo-ind-ei-ei;FixedBasketPopulation">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-utl-alx;StatisticalUniverse"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
@@ -756,9 +659,11 @@ Excluded are directors of incorporated enterprises and members of shareholders c
 				</owl:someValuesFrom>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<rdfs:label>goods or services population</rdfs:label>
-		<skos:definition>a statistical universe consisting of specific goods and/or services designed for the purposes of supporting surveys such as those used as the basis for price indices</skos:definition>
+		<rdfs:label>fixed basket population</rdfs:label>
+		<skos:definition>statistical universe consisting of specific goods and/or services designed for the purposes of supporting surveys such as those used as the basis for price indices</skos:definition>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">https://www.imf.org/external/pubs/ft/ppi/2010/manual/ppi.pdf</fibo-fnd-utl-av:adaptedFrom>
+		<fibo-fnd-utl-av:synonym>goods and services population</fibo-fnd-utl-av:synonym>
+		<fibo-fnd-utl-av:synonym>goods and/or services population</fibo-fnd-utl-av:synonym>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&fibo-ind-ei-ei;GovernmentSpecifiedStatisticalArea">
@@ -839,12 +744,6 @@ A household may be located in a housing unit or in a set of collective living qu
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;appliesTo"/>
 				<owl:someValuesFrom rdf:resource="&fibo-ind-ei-ei;GovernmentSpecifiedStatisticalArea"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-ind-ei-ei;hasIndicatorValue"/>
-				<owl:someValuesFrom rdf:resource="&fibo-fnd-utl-alx;RatioValue"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>inflation rate</rdfs:label>
@@ -978,7 +877,7 @@ A household may be located in a housing unit or in a set of collective living qu
 							</rdf:Description>
 							<rdf:Description rdf:about="&fibo-ind-ei-ei;EstablishmentPopulation">
 							</rdf:Description>
-							<rdf:Description rdf:about="&fibo-ind-ei-ei;GoodsOrServicesPopulation">
+							<rdf:Description rdf:about="&fibo-ind-ei-ei;FixedBasketPopulation">
 							</rdf:Description>
 						</owl:unionOf>
 					</owl:Class>
@@ -1001,17 +900,11 @@ A household may be located in a housing unit or in a set of collective living qu
 							</rdf:Description>
 							<rdf:Description rdf:about="&fibo-ind-ei-ei;EstablishmentPopulation">
 							</rdf:Description>
-							<rdf:Description rdf:about="&fibo-ind-ei-ei;GoodsOrServicesPopulation">
+							<rdf:Description rdf:about="&fibo-ind-ei-ei;FixedBasketPopulation">
 							</rdf:Description>
 						</owl:unionOf>
 					</owl:Class>
 				</owl:someValuesFrom>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-ind-ei-ei;hasIndicatorValue"/>
-				<owl:someValuesFrom rdf:resource="&fibo-fnd-utl-alx;NumericIndexValue"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>producer price index</rdfs:label>
@@ -1026,17 +919,23 @@ A household may be located in a housing unit or in a set of collective living qu
 	<owl:Class rdf:about="&fibo-ind-ei-ei;Productivity">
 		<rdfs:subClassOf rdf:resource="&fibo-fnd-utl-alx;Expression"/>
 		<rdfs:subClassOf rdf:resource="&fibo-ind-ei-ei;EconomicIndicator"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-ind-ei-ei;hasIndicatorValue"/>
-				<owl:someValuesFrom rdf:resource="&fibo-fnd-utl-alx;RatioValue"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label>productivity</rdfs:label>
 		<skos:definition>an economic indicator representing a ratio of a volume measure of output to a volume measure of input use</skos:definition>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">http://stats.oecd.org/glossary/detail.asp?ID=2167</fibo-fnd-utl-av:adaptedFrom>
 		<fibo-fnd-utl-av:adaptedFrom rdf:datatype="&xsd;anyURI">http://www.oecd.org/std/productivity-stats/2352458.pdf</fibo-fnd-utl-av:adaptedFrom>
 		<fibo-fnd-utl-av:explanatoryNote>The primary objectives of productivity measurement include: (a) tracing technology change, i.e., the currently known ways of converting resources into outputs desired by the economy, (b) identifying changes in efficiency, (c) understanding real cost savings, (d) benchmarking production processes, and (e) assessing standards of living.  Productivity measures may also be single factor or multifactor.</fibo-fnd-utl-av:explanatoryNote>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&fibo-ind-ei-ei;StatisticalInformationPublisher">
+		<rdfs:subClassOf rdf:resource="&fibo-be-fct-pub;Publisher"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;hasIdentity"/>
+				<owl:someValuesFrom rdf:resource="&fibo-fnd-org-fm;FormalOrganization"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>statistical information publisher</rdfs:label>
+		<skos:definition>publisher that packages and makes analytical and statistical data available</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&fibo-ind-ei-ei;UltimateConsumer">
@@ -1122,12 +1021,6 @@ A household may be located in a housing unit or in a set of collective living qu
 				<owl:someValuesFrom rdf:resource="&fibo-ind-ei-ei;UnemployedPopulation"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-ind-ei-ei;hasIndicatorValue"/>
-				<owl:someValuesFrom rdf:resource="&fibo-fnd-utl-alx;RatioValue"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label>unemployment rate</rdfs:label>
 		<rdfs:seeAlso rdf:resource="http://www.bls.gov/news.release/pdf/empsit.pdf"/>
 		<skos:definition>an economic indicator representing the ratio of the unemployed population with respect to the civilian labor force of a given economy for some specified period</skos:definition>
@@ -1184,14 +1077,6 @@ A household may be located in a housing unit or in a set of collective living qu
 		<rdfs:range rdf:resource="&fibo-fnd-qt-qtu;QuantityValue"/>
 		<skos:definition>specifies a quantity value for a given indicator</skos:definition>
 	</owl:ObjectProperty>
-	
-	<owl:DatatypeProperty rdf:about="&fibo-ind-ei-ei;hasMinimumLegalWorkingAge">
-		<rdfs:label>has minimum legal working age</rdfs:label>
-		<rdfs:range rdf:resource="&xsd;integer"/>
-		<skos:definition>indicates the legal working age (minimum), in years, of people that are counted as members of the working population</skos:definition>
-		<fibo-fnd-utl-av:adaptedFrom rdf:resource="http://www.investopedia.com/terms/w/working-age-population.asp"/>
-		<fibo-fnd-utl-av:explanatoryNote>The working-age population is the total population in a region, within a set range of ages, that is considered to be able and likely to work. The working-age population measure is used to give an estimate of the total number of potential workers within an economy. For example, in the U.S., it is 16, whereas in Canada it is 15.</fibo-fnd-utl-av:explanatoryNote>
-	</owl:DatatypeProperty>
 	
 	<owl:ObjectProperty rdf:about="&fibo-ind-ei-ei;hasSeriesOrigin">
 		<rdfs:subPropertyOf rdf:resource="&fibo-fnd-dt-fd;hasStartDate"/>
