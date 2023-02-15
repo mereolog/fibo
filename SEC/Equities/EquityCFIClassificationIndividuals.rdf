@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rdf:RDF [
+	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
 	<!ENTITY dct "http://purl.org/dc/terms/">
 	<!ENTITY fibo-fnd-arr-cls "https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/ClassificationSchemes/">
 	<!ENTITY fibo-fnd-rel-rel "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/">
@@ -15,10 +16,10 @@
 	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
 	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
-	<!ENTITY sm "http://www.omg.org/techprocess/ab/SpecificationMetadata/">
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
 <rdf:RDF xml:base="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/"
+	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
 	xmlns:dct="http://purl.org/dc/terms/"
 	xmlns:fibo-fnd-arr-cls="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/ClassificationSchemes/"
 	xmlns:fibo-fnd-rel-rel="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/"
@@ -34,38 +35,32 @@
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-	xmlns:sm="http://www.omg.org/techprocess/ab/SpecificationMetadata/"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
 	
 	<owl:Ontology rdf:about="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityCFIClassificationIndividuals/">
 		<rdfs:label>Equities CFI Classification Individuals Ontology</rdfs:label>
 		<dct:abstract>This ontology covers the ISO 10962, Fourth edition, 2019-10 classification codes for instruments that represent an ownership interest in an entity or pool of assets. It is intended to cover sections most of the codes included in section 6.2 of the standard, with the exception of structured instruments, section 6.2.8, which will be covered under derivatives.</dct:abstract>
+		<dct:contributor>Thematix Partners LLC</dct:contributor>
 		<dct:license rdf:datatype="&xsd;anyURI">http://opensource.org/licenses/MIT</dct:license>
-		<sm:contentLanguage rdf:datatype="&xsd;anyURI">https://www.w3.org/TR/owl2-quick-reference/</sm:contentLanguage>
-		<sm:contributor>Thematix Partners LLC</sm:contributor>
-		<sm:copyright>Copyright (c) 2020-2021 EDM Council, Inc.</sm:copyright>
-		<sm:copyright>Copyright (c) 2020-2021 Object Management Group, Inc.</sm:copyright>
-		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://spec.edmcouncil.org/fibo/ontology/FND/</sm:dependsOn>
-		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityInstruments/</sm:dependsOn>
-		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesClassification/</sm:dependsOn>
-		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/</sm:dependsOn>
-		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesListings/</sm:dependsOn>
-		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://www.omg.org/spec/LCC/</sm:dependsOn>
-		<sm:fileAbbreviation>fibo-sec-eq-10962</sm:fileAbbreviation>
-		<sm:filename>EquityCFIClassificationIndividuals.rdf</sm:filename>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Equities/EquityInstruments/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesClassification/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesListings/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/Countries/CountryRepresentation/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/"/>
-		<owl:versionIRI rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/20201201/Equities/EquityCFIClassificationIndividuals/"/>
+		<owl:versionIRI rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/20230201/Equities/EquityCFIClassificationIndividuals/"/>
 		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/SEC/20200501/Equities/EquityCFIClassificationIndividuals.rdf version of this ontology was revised to replace uses of hasTag in Relations with hasTag from LCC, as the more complex union of datatypes in the Relations concept is not needed here.</skos:changeNote>
 		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/SEC/20200701/Equities/EquityCFIClassificationIndividuals.rdf version of this ontology was revised to streamline the representation of voting rights and payment form, eliminate embedded restrictions, and build out additional classes representing the various feature-based descriptions supported by the CFI standard.</skos:changeNote>
 		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/SEC/20201201/Equities/EquityCFIClassificationIndividuals.rdf version of this ontology was revised to complete the set of possible common share representations corresponding to the CFI standard, complete the set of corresponding codes for common shares (non-convertible), and add the set of possible combinations for preferred shares (non-convertible).</skos:changeNote>
+		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/SEC/20210201/Equities/EquityCFIClassificationIndividuals.rdf version of this ontology was revised to simplify the encoding of the individual instrument classifiers to eliminate unnecessary restrictions.</skos:changeNote>
+		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/SEC/20220101/Equities/EquityCFIClassificationIndividuals.rdf version of this ontology was revised to address text formatting hygiene issues.</skos:changeNote>
+		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/SEC/20220801/Equities/EquityCFIClassificationIndividuals.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG&apos;s Specification Metadata vocabulary.</skos:changeNote>
 		<fibo-fnd-utl-av:hasMaturityLevel rdf:resource="&fibo-fnd-utl-av;Release"/>
+		<cmns-av:copyright>Copyright (c) 2020-2023 EDM Council, Inc.</cmns-av:copyright>
+		<cmns-av:copyright>Copyright (c) 2020-2023 Object Management Group, Inc.</cmns-av:copyright>
 	</owl:Ontology>
 	
 	<owl:Class rdf:about="&fibo-sec-eq-10962;CommonEnhancedVotingRestrictedFullyPaidRegisteredShare">
@@ -77,12 +72,6 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&lcc-cr;isClassifiedBy"/>
-				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESETFR"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;hasDenotation"/>
 				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESETFR"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -102,12 +91,6 @@
 				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESETOR"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;hasDenotation"/>
-				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESETOR"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en-US">common, enhanced voting, restricted, nil paid, registered share</rdfs:label>
 		<skos:definition>common share that confers multiple votes per share, is restricted from a sales / transfer perspective, is nil paid and is registered</skos:definition>
 	</owl:Class>
@@ -121,12 +104,6 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&lcc-cr;isClassifiedBy"/>
-				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESETPR"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;hasDenotation"/>
 				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESETPR"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -146,12 +123,6 @@
 				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESEUFR"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;hasDenotation"/>
-				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESEUFR"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en-US">common, enhanced voting, unrestricted, fully-paid, registered share</rdfs:label>
 		<skos:definition>common share that confers multiple votes per share, is not restricted from a sales / transfer perspective, is fully paid and is registered</skos:definition>
 	</owl:Class>
@@ -165,12 +136,6 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&lcc-cr;isClassifiedBy"/>
-				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESEUOR"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;hasDenotation"/>
 				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESEUOR"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -190,12 +155,6 @@
 				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESEUPR"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;hasDenotation"/>
-				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESEUPR"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en-US">common, enhanced voting, unrestricted, partly paid, registered share</rdfs:label>
 		<skos:definition>common share that confers multiple votes per share, is not restricted from a sales / transfer perspective, is partially paid and is registered</skos:definition>
 	</owl:Class>
@@ -209,12 +168,6 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&lcc-cr;isClassifiedBy"/>
-				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESNTFR"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;hasDenotation"/>
 				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESNTFR"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -234,12 +187,6 @@
 				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESNTOR"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;hasDenotation"/>
-				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESNTOR"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en-US">common, non-voting, restricted, nil paid, registered share</rdfs:label>
 		<skos:definition>common share that confers exactly 0 votes per share, is restricted from a sales / transfer perspective, is nil paid and is registered</skos:definition>
 	</owl:Class>
@@ -253,12 +200,6 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&lcc-cr;isClassifiedBy"/>
-				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESNTPR"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;hasDenotation"/>
 				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESNTPR"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -278,12 +219,6 @@
 				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESNUFR"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;hasDenotation"/>
-				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESNUFR"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en-US">common, non-voting, unrestricted, fully-paid, registered share</rdfs:label>
 		<skos:definition>common share that confers exactly 0 votes per share, is unrestricted from a sales perspective, is fully paid and is registered</skos:definition>
 	</owl:Class>
@@ -297,12 +232,6 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&lcc-cr;isClassifiedBy"/>
-				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESNUOR"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;hasDenotation"/>
 				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESNUOR"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -322,12 +251,6 @@
 				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESNUPR"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;hasDenotation"/>
-				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESNUPR"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en-US">common, non-voting, unrestricted, partly paid, registered share</rdfs:label>
 		<skos:definition>common share that confers exactly 0 votes per share, is unrestricted from a sales perspective, is partially paid and is registered</skos:definition>
 	</owl:Class>
@@ -341,12 +264,6 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&lcc-cr;isClassifiedBy"/>
-				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESRTFR"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;hasDenotation"/>
 				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESRTFR"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -366,12 +283,6 @@
 				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESRTOR"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;hasDenotation"/>
-				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESRTOR"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en-US">common, restricted voting, restricted, nil paid, registered share</rdfs:label>
 		<skos:definition>common share that confers less than one vote per share, is restricted from a sales / transfer perspective, is nil paid and is registered</skos:definition>
 	</owl:Class>
@@ -385,12 +296,6 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&lcc-cr;isClassifiedBy"/>
-				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESRTPR"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;hasDenotation"/>
 				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESRTPR"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -410,12 +315,6 @@
 				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESRUFR"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;hasDenotation"/>
-				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESRUFR"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en-US">common, restricted voting, unrestricted, fully-paid, registered share</rdfs:label>
 		<skos:definition>common share that confers less than one vote per share, is unrestricted from a sales / transfer perspective, is fully paid and is registered</skos:definition>
 	</owl:Class>
@@ -429,12 +328,6 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&lcc-cr;isClassifiedBy"/>
-				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESRUOR"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;hasDenotation"/>
 				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESRUOR"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -454,12 +347,6 @@
 				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESRUPR"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;hasDenotation"/>
-				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESRUPR"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en-US">common, restricted voting, unrestricted, partly paid, registered share</rdfs:label>
 		<skos:definition>common share that confers less than one vote per share, is unrestricted from a sales / transfer perspective, is partially paid and is registered</skos:definition>
 	</owl:Class>
@@ -473,12 +360,6 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&lcc-cr;isClassifiedBy"/>
-				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESVTFR"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;hasDenotation"/>
 				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESVTFR"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -498,12 +379,6 @@
 				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESVTOR"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;hasDenotation"/>
-				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESVTOR"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en-US">common, voting, restricted, nil paid, registered share</rdfs:label>
 		<skos:definition>common share that confers exactly one vote per share, is restricted from a sales / transfer perspective, is nil paid and is registered</skos:definition>
 	</owl:Class>
@@ -517,12 +392,6 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&lcc-cr;isClassifiedBy"/>
-				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESVTPR"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;hasDenotation"/>
 				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESVTPR"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -542,12 +411,6 @@
 				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESVUFR"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;hasDenotation"/>
-				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESVUFR"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en-US">common, voting, unrestricted, fully-paid, registered share</rdfs:label>
 		<skos:definition>common share that confers exactly one vote per share, is unrestricted from a sales perspective, is fully paid and is registered</skos:definition>
 	</owl:Class>
@@ -564,12 +427,6 @@
 				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESVUOR"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;hasDenotation"/>
-				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESVUOR"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en-US">common, voting, unrestricted, nil paid, registered share</rdfs:label>
 		<skos:definition>common share that confers exactly one vote per share, is unrestricted from a sales perspective, is nil paid and is registered</skos:definition>
 	</owl:Class>
@@ -583,12 +440,6 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&lcc-cr;isClassifiedBy"/>
-				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESVUPR"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&lcc-lr;hasDenotation"/>
 				<owl:hasValue rdf:resource="&fibo-sec-eq-10962;ESVUPR"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
@@ -2653,7 +2504,7 @@
 		<rdfs:subClassOf rdf:resource="&fibo-sec-eq-eq;PreferredShareWithAuctionRateDividend"/>
 		<rdfs:subClassOf rdf:resource="&fibo-sec-eq-eq;RestrictedVotingShare"/>
 		<rdfs:subClassOf rdf:resource="&fibo-sec-sec-lst;RegisteredSecurity"/>
-		<rdfs:label xml:lang="en-US">preferred,  restricted voting, perpetual, auction rate income, registered share</rdfs:label>
+		<rdfs:label xml:lang="en-US">preferred, restricted voting, perpetual, auction rate income, registered share</rdfs:label>
 		<skos:definition>preferred share that confers less than one vote per share, has no fixed maturity date, provides a periodic income whose dividend rate is adjusted through an auction, and is registered</skos:definition>
 	</owl:Class>
 	

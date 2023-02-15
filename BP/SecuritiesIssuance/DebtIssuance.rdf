@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rdf:RDF [
+	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
 	<!ENTITY dct "http://purl.org/dc/terms/">
 	<!ENTITY fibo-bp-iss-dbti "https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/DebtIssuance/">
 	<!ENTITY fibo-bp-iss-muni "https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/MuniIssuance/">
@@ -15,19 +16,19 @@
 	<!ENTITY fibo-fnd-rel-rel "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/">
 	<!ENTITY fibo-fnd-utl-alx "https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/Analytics/">
 	<!ENTITY fibo-fnd-utl-av "https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/">
-	<!ENTITY fibo-sec-dbt-ab-pbs "https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/AssetBackedSecurities/PoolBackedSecurities/">
 	<!ENTITY fibo-sec-dbt-bnd "https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/Bonds/">
 	<!ENTITY fibo-sec-dbt-dbti "https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/DebtInstruments/">
+	<!ENTITY fibo-sec-dbt-pbs "https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/">
 	<!ENTITY fibo-sec-sec-iss "https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/">
 	<!ENTITY fibo-sec-sec-pls "https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/Pools/">
 	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
 	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
 	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
-	<!ENTITY sm "http://www.omg.org/techprocess/ab/SpecificationMetadata/">
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
 <rdf:RDF xml:base="https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/DebtIssuance/"
+	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
 	xmlns:dct="http://purl.org/dc/terms/"
 	xmlns:fibo-bp-iss-dbti="https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/DebtIssuance/"
 	xmlns:fibo-bp-iss-muni="https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/MuniIssuance/"
@@ -43,26 +44,21 @@
 	xmlns:fibo-fnd-rel-rel="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/"
 	xmlns:fibo-fnd-utl-alx="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/Analytics/"
 	xmlns:fibo-fnd-utl-av="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/"
-	xmlns:fibo-sec-dbt-ab-pbs="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/AssetBackedSecurities/PoolBackedSecurities/"
 	xmlns:fibo-sec-dbt-bnd="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/Bonds/"
 	xmlns:fibo-sec-dbt-dbti="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/DebtInstruments/"
+	xmlns:fibo-sec-dbt-pbs="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/"
 	xmlns:fibo-sec-sec-iss="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/"
 	xmlns:fibo-sec-sec-pls="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/Pools/"
 	xmlns:owl="http://www.w3.org/2002/07/owl#"
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-	xmlns:sm="http://www.omg.org/techprocess/ab/SpecificationMetadata/"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
 	
 	<owl:Ontology rdf:about="https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/DebtIssuance/">
 		<rdfs:label xml:lang="en">Debt Issuance Ontology</rdfs:label>
 		<dct:abstract>General issuance process for issuance of debt instruments. Forms the basis for more detailed issuance processes such as MBS issuance and municipal bonds issue.</dct:abstract>
-		<dct:license rdf:datatype="&xsd;anyURI">http://opensource.org/licenses/MIT</dct:license>
-		<sm:contentLanguage rdf:resource="https://www.w3.org/TR/owl2-quick-reference/"/>
-		<sm:copyright>Copyright (c) 2013-2021 EDM Council, Inc.</sm:copyright>
-		<sm:fileAbbreviation>fibo-bp-iss-dbti</sm:fileAbbreviation>
-		<sm:filename>DebtIssuance.rdf</sm:filename>
+		<dct:license rdf:datatype="&xsd;anyURI">https://opensource.org/licenses/MIT</dct:license>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/IssuanceProcess/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/MuniIssuance/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/PrivateLabelMBSIssuance/"/>
@@ -76,13 +72,15 @@
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/Analytics/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/"/>
-		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/AssetBackedSecurities/PoolBackedSecurities/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/Bonds/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/DebtInstruments/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/Pools/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
 		<owl:versionIRI rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/DebtIssuance/"/>
 		<fibo-fnd-utl-av:hasMaturityLevel rdf:resource="&fibo-fnd-utl-av;Provisional"/>
+		<cmns-av:copyright>Copyright (c) 2013-2023 EDM Council, Inc.</cmns-av:copyright>
 	</owl:Ontology>
 	
 	<owl:Class rdf:about="&fibo-bp-iss-dbti;ABSSecuritizationProcess">
@@ -94,7 +92,7 @@
 		<rdfs:subClassOf rdf:resource="&fibo-bp-iss-dbti;RefundingPurpose"/>
 		<rdfs:label xml:lang="en">advance refunding</rdfs:label>
 		<skos:definition xml:lang="en">refunding in which bond issuance in which new bonds are sold at a lower rate than outstanding ones</skos:definition>
-		<fibo-fnd-utl-av:explanatoryNote xml:lang="en">The proceeds are then invested, and when the older bonds become callable they are paid off with the invested proceeds.</fibo-fnd-utl-av:explanatoryNote>
+		<cmns-av:explanatoryNote xml:lang="en">The proceeds are then invested, and when the older bonds become callable they are paid off with the invested proceeds.</cmns-av:explanatoryNote>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&fibo-bp-iss-dbti;AssetPoolCreationProcess">
@@ -102,12 +100,6 @@
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-fbc-pas-fpas;precedes"/>
 				<owl:someValuesFrom rdf:resource="&fibo-bp-iss-dbti;DebtSecuritizationProcess"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;isProducedBy"/>
-				<owl:someValuesFrom rdf:resource="&fibo-sec-dbt-ab-pbs;SecuritizedDebtPool"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en">asset pool creation process</rdfs:label>
@@ -386,7 +378,7 @@
 		<rdfs:domain rdf:resource="&fibo-bp-iss-dbti;BondOffering"/>
 		<rdfs:range rdf:resource="&fibo-fnd-utl-alx;Percentage"/>
 		<skos:definition xml:lang="en">discount from par value at the time a bond or other debt instrument is issued</skos:definition>
-		<fibo-fnd-utl-av:explanatoryNote xml:lang="en">The OID is the difference between the stated redemption price at maturity and the actual issue price.</fibo-fnd-utl-av:explanatoryNote>
+		<cmns-av:explanatoryNote xml:lang="en">The OID is the difference between the stated redemption price at maturity and the actual issue price.</cmns-av:explanatoryNote>
 	</owl:ObjectProperty>
 	
 	<owl:DatatypeProperty rdf:about="&fibo-bp-iss-dbti;isBankQualified">
@@ -407,15 +399,6 @@
 		<rdfs:range rdf:resource="&fibo-fnd-acc-cur;MonetaryAmount"/>
 		<skos:definition xml:lang="en">Takedown amount of the security handled by the underwriter(that will be brought into DTC).</skos:definition>
 	</owl:ObjectProperty>
-	
-	<owl:Class rdf:about="&fibo-sec-dbt-ab-pbs;SecuritizedDebtPool">
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-fnd-arr-lif;hasStage"/>
-				<owl:someValuesFrom rdf:resource="&fibo-bp-iss-dbti;Issued"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-	</owl:Class>
 	
 	<owl:Class rdf:about="&fibo-sec-dbt-dbti;DebtOffering">
 		<rdfs:subClassOf>

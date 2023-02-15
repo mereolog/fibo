@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rdf:RDF [
+	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
 	<!ENTITY dct "http://purl.org/dc/terms/">
 	<!ENTITY fibo-fnd-utl-av "https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/">
 	<!ENTITY fibo-dev "https://spec.edmcouncil.org/fibo/ontology/AboutFIBODev/">
@@ -7,10 +8,10 @@
 	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
 	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
-	<!ENTITY sm "http://www.omg.org/techprocess/ab/SpecificationMetadata/">
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">	
 ]>	
 <rdf:RDF xml:base="https://spec.edmcouncil.org/fibo/ontology/AboutFIBODev/"
+	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
 	xmlns:dct="http://purl.org/dc/terms/"
 	xmlns:fibo-fnd-utl-av="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/"
 	xmlns:fibo-dev="https://spec.edmcouncil.org/fibo/ontology/AboutFIBODev/"
@@ -18,20 +19,16 @@
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-	xmlns:sm="http://www.omg.org/techprocess/ab/SpecificationMetadata/"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
 	
   <owl:Ontology rdf:about="https://spec.edmcouncil.org/fibo/ontology/AboutFIBODev/">
   		<rdfs:label>About FIBO Development</rdfs:label>
 		<dct:abstract>This ontology is provided for the convenience of FIBO users.  It loads the very latest version of every FIBO ontology (released, provisional, and informative) based on the contents of GitHub, for use in particular while working on revisions.  Note that metadata files and other 'load' files, such as the various domain-specific 'all' files, are intentionally excluded.</dct:abstract>
-		<dct:issued rdf:datatype="&xsd;dateTime">2021-09-28T18:00:00</dct:issued>
-		<dct:license rdf:resource="http://opensource.org/licenses/MIT"/>
-		<sm:contentLanguage rdf:datatype="&xsd;anyURI">https://www.w3.org/TR/owl2-quick-reference/</sm:contentLanguage>
-		<sm:copyright>Copyright (c) 2014-2021 EDM Council, Inc.</sm:copyright>
-		<sm:copyright>Copyright (c) 2014-2021 Object Management Group, Inc.</sm:copyright>
-		<sm:submitter>Thematix Partners LLC</sm:submitter>
-		<sm:fileAbbreviation>fibo-dev</sm:fileAbbreviation>
-		<sm:filename>AboutFIBODev.rdf</sm:filename>
+		<dct:issued rdf:datatype="&xsd;dateTime">2018-03-31T18:00:00</dct:issued>
+		<dct:license rdf:datatype="&xsd;anyURI">https://opensource.org/licenses/MIT</dct:license>
+		<dct:modified rdf:datatype="&xsd;dateTime">2023-02-13T18:00:00</dct:modified>
+		<cmns-av:copyright>Copyright (c) 2013-2023 EDM Council, Inc.</cmns-av:copyright>
+		<cmns-av:copyright>Copyright (c) 2013-2023 Object Management Group, Inc.</cmns-av:copyright>
 		<rdfs:seeAlso rdf:datatype="&xsd;anyURI">https://spec.edmcouncil.org/fibo/</rdfs:seeAlso>
 		
 	<!-- 
@@ -71,6 +68,7 @@
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LEIEntities/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/NorthAmericanEntities/USExampleEntities/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/NorthAmericanEntities/USExampleExecutives/"/>
 		
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/ControlParties/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/OwnershipAndControl/CorporateControl/"/>
@@ -113,6 +111,9 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->	 
 
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/CAE/CorporateEvents/CorporateActions/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/CAE/CorporateEvents/GLEIF-CorporateActionIndividuals/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/CAE/CorporateEvents/ISO15022-CorporateActionIndividuals/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/CAE/CorporateEvents/SecurityRelatedCorporateActions/"/>	 
 	
 	<!-- 
@@ -124,8 +125,6 @@
      -->	 
 	 
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/DER/SecurityBasedDerivatives/SecurityBasedDerivatives/"/>
-		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/DER/SecurityBasedDerivatives/EquityForwards/"/>	
-		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/DER/SecurityBasedDerivatives/EquityOptions/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/DER/SecurityBasedDerivatives/EquitySwaps/"/>
 		
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/DER/CreditDerivatives/CreditDefaultSwaps/"/>
@@ -137,13 +136,10 @@
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/ExoticOptions/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/FuturesAndForwards/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Options/"/>
-		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/ParticipationNotes/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/RightsAndWarrants/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/Swaps/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/DER/DerivativesContracts/SwapsIndividuals/"/>
 	
-		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/InflationSwaps/"/>
-		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IROptions/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwapExampleIndividuals/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/IRSwaps/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/DER/RateDerivatives/RateDerivatives/"/>	 
@@ -250,16 +246,9 @@
 		
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/"/>
 		
-		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/TransactionsExt/EconomicResources/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/TransactionsExt/MarketTransactions/"/>
-		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/TransactionsExt/QuantifiedResources/"/>
-		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/TransactionsExt/REAClaimsEvents/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/TransactionsExt/REATransactions/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/TransactionsExt/SecuritiesTransactions/"/>
-		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/TransactionsExt/SupplyTransactions/"/>
-		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/TransactionsExt/TransactionAccounting/"/>
-		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/TransactionsExt/TransactionEvents/"/>
-		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/TransactionsExt/TransactionsExtended/"/>
 		
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/Analytics/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/"/>
@@ -295,21 +284,20 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-	<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoanContracts/LoanApplications/"/>
-    <owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoanContracts/LoanCore/"/>
-	<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoanContracts/LoanEvents/"/>
-	<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoanContracts/LoanHMDA/"/>
+	<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/LoanApplications/"/>
+	<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/LoanEvents/"/>
+    <owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/"/>
+	<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/LoansRegulatory/"/>
 
-	<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/LOAN/Loans/LoansRegulatory/"/>
+    <owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/ConstructionLoans/"/>
+	<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/HomeMortgageDisclosureActCoveredMortgages/"/>
+	<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/MortgageLoans/"/>
 		
-	<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoanTypes/CommercialLoans/"/>
-    <owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoanTypes/ConstructionLoans/"/>
-	<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoanTypes/CreditProducts/"/>
-	<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoanTypes/GeneralLoans/"/>
-	<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoanTypes/LoanProducts/"/>
-	<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoanTypes/MortgageLoans/"/>
-	<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoanTypes/PersonalLoans/"/>
-    <owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoanTypes/StudentLoans/"/>
+	<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CommercialLoans/"/>
+	<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/ConsumerLoans/"/>
+	<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/LoanProducts/"/>
+	<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/MarineFinance/"/>
+    <owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/StudentLoans/"/>
 	
 	<!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -322,7 +310,6 @@
     <owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/MD/CIVTemporal/FundsTemporal/"/>
 	
     <owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/MD/DebtTemporal/DebtAnalytics/"/>
-    <owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/MD/DebtTemporal/DebtPricingYields/"/>
 	
     <owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/MD/DerivativesTemporal/ETOptionsTemporal/"/>
     <owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/MD/DerivativesTemporal/FuturesTemporal/"/>
@@ -338,13 +325,12 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 	 
-		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/AssetBackedSecurities/AssetBackedSecurities/"/>
-		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/AssetBackedSecurities/CDOs/"/>
-		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/AssetBackedSecurities/CMOs/"/>
-		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/AssetBackedSecurities/LoanParticipationNotes/"/>
-		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/AssetBackedSecurities/MortgageBackedSecurities/"/>
-		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/AssetBackedSecurities/PoolBackedSecurities/"/>
-		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/AssetBackedSecurities/SyntheticCDOs/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/AssetBackedSecurities/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/CollateralizedDebtObligations/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/LoanParticipationNotes/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/MortgageBackedSecurities/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/SyntheticCDOs/"/>
 	
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/Bonds/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/DebtInstruments/"/>
@@ -370,7 +356,7 @@
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesRestrictions/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecurityAssets/"/>
 	 
-	 	<owl:versionIRI rdf:resource="https://spec.edmcouncil.org/fibo/ontology/20210801/AboutFIBODev/"/>
+	 	<owl:versionIRI rdf:resource="https://spec.edmcouncil.org/fibo/ontology/20230201/AboutFIBODev/"/>
   </owl:Ontology>
   
 </rdf:RDF>

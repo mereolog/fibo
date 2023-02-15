@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rdf:RDF [
+	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
 	<!ENTITY dct "http://purl.org/dc/terms/">
 	<!ENTITY fibo-bp-iss-ambs "https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/AgencyMBSIssuance/">
 	<!ENTITY fibo-bp-iss-dbti "https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/DebtIssuance/">
@@ -15,19 +16,19 @@
 	<!ENTITY fibo-fnd-dt-fd "https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/">
 	<!ENTITY fibo-fnd-rel-rel "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/">
 	<!ENTITY fibo-fnd-utl-av "https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/">
-	<!ENTITY fibo-loan-typ-mtg "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoanTypes/MortgageLoans/">
-	<!ENTITY fibo-sec-dbt-ab-mbs "https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/AssetBackedSecurities/MortgageBackedSecurities/">
-	<!ENTITY fibo-sec-dbt-ab-pbs "https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/AssetBackedSecurities/PoolBackedSecurities/">
+	<!ENTITY fibo-loan-reln-mtg "https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/MortgageLoans/">
 	<!ENTITY fibo-sec-dbt-bnd "https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/Bonds/">
+	<!ENTITY fibo-sec-dbt-mbs "https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/MortgageBackedSecurities/">
+	<!ENTITY fibo-sec-dbt-pbs "https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/">
 	<!ENTITY fibo-sec-sec-iss "https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/">
 	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
 	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
 	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
-	<!ENTITY sm "http://www.omg.org/techprocess/ab/SpecificationMetadata/">
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
 <rdf:RDF xml:base="https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/AgencyMBSIssuance/"
+	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
 	xmlns:dct="http://purl.org/dc/terms/"
 	xmlns:fibo-bp-iss-ambs="https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/AgencyMBSIssuance/"
 	xmlns:fibo-bp-iss-dbti="https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/DebtIssuance/"
@@ -43,22 +44,21 @@
 	xmlns:fibo-fnd-dt-fd="https://spec.edmcouncil.org/fibo/ontology/FND/DatesAndTimes/FinancialDates/"
 	xmlns:fibo-fnd-rel-rel="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/"
 	xmlns:fibo-fnd-utl-av="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/"
-	xmlns:fibo-loan-typ-mtg="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoanTypes/MortgageLoans/"
-	xmlns:fibo-sec-dbt-ab-mbs="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/AssetBackedSecurities/MortgageBackedSecurities/"
-	xmlns:fibo-sec-dbt-ab-pbs="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/AssetBackedSecurities/PoolBackedSecurities/"
+	xmlns:fibo-loan-reln-mtg="https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/MortgageLoans/"
 	xmlns:fibo-sec-dbt-bnd="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/Bonds/"
+	xmlns:fibo-sec-dbt-mbs="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/MortgageBackedSecurities/"
+	xmlns:fibo-sec-dbt-pbs="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/"
 	xmlns:fibo-sec-sec-iss="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/"
 	xmlns:owl="http://www.w3.org/2002/07/owl#"
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-	xmlns:sm="http://www.omg.org/techprocess/ab/SpecificationMetadata/"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
 	
 	<owl:Ontology rdf:about="https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/AgencyMBSIssuance/">
 		<rdfs:label xml:lang="en">AgencyMBSIssuance</rdfs:label>
 		<dct:abstract>Process ontology for the process of issuance (securitization) of mortgage backed securities by government agencies. Based on US government agency MBS issuance process.</dct:abstract>
-		<sm:fileAbbreviation>fibo-bp-iss-ambs</sm:fileAbbreviation>
+		<dct:license rdf:datatype="&xsd;anyURI">https://opensource.org/licenses/MIT</dct:license>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/DebtIssuance/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/IssuanceDocuments/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/IssuanceProcess/"/>
@@ -73,13 +73,15 @@
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Parties/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/"/>
-		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoanTypes/MortgageLoans/"/>
-		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/AssetBackedSecurities/MortgageBackedSecurities/"/>
-		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/AssetBackedSecurities/PoolBackedSecurities/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/MortgageLoans/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/Bonds/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/MortgageBackedSecurities/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Debt/PoolBackedSecurities/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/SecuritiesIssuance/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
 		<owl:versionIRI rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BP/SecuritiesIssuance/AgencyMBSIssuance/"/>
 		<fibo-fnd-utl-av:hasMaturityLevel rdf:resource="&fibo-fnd-utl-av;Provisional"/>
+		<cmns-av:copyright>Copyright (c) 2013-2023 EDM Council, Inc.</cmns-av:copyright>
 	</owl:Ontology>
 	
 	<owl:Class rdf:about="&fibo-bp-iss-ambs;AcquireMortgage">
@@ -87,7 +89,7 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-bp-iss-ambs;purchase"/>
-				<owl:someValuesFrom rdf:resource="&fibo-loan-typ-mtg;Mortgage"/>
+				<owl:someValuesFrom rdf:resource="&fibo-loan-reln-mtg;Mortgage"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en">acquire mortgage</rdfs:label>
@@ -98,7 +100,7 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-bp-iss-ambs;addsToPool"/>
-				<owl:someValuesFrom rdf:resource="&fibo-loan-typ-mtg;Mortgage"/>
+				<owl:someValuesFrom rdf:resource="&fibo-loan-reln-mtg;Mortgage"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en">add mortgage to pool</rdfs:label>
@@ -143,7 +145,7 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-bp-iss-ambs;isAssessmentOf"/>
-				<owl:someValuesFrom rdf:resource="&fibo-loan-typ-mtg;Mortgage"/>
+				<owl:someValuesFrom rdf:resource="&fibo-loan-reln-mtg;Mortgage"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en">classify mortgage</rdfs:label>
@@ -191,12 +193,12 @@
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;refersTo"/>
-				<owl:someValuesFrom rdf:resource="&fibo-loan-typ-mtg;Mortgage"/>
+				<owl:someValuesFrom rdf:resource="&fibo-loan-reln-mtg;Mortgage"/>
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label xml:lang="en">identify conforming mortgage</rdfs:label>
 		<skos:definition xml:lang="en">Identify mortgage conforming to overall requirements for this issuer.</skos:definition>
-		<fibo-fnd-utl-av:explanatoryNote xml:lang="en">This does not relate to the criteria for belonging to an individual, defined mortgage pool but conforms to the requirements of the issuing organization overall. This is for Agency pools. For non-agency, the equivalent of this step is carried out at pool level with a clause to reject the mortgage.</fibo-fnd-utl-av:explanatoryNote>
+		<cmns-av:explanatoryNote xml:lang="en">This does not relate to the criteria for belonging to an individual, defined mortgage pool but conforms to the requirements of the issuing organization overall. This is for Agency pools. For non-agency, the equivalent of this step is carried out at pool level with a clause to reject the mortgage.</cmns-av:explanatoryNote>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&fibo-bp-iss-ambs;IdentifyUnderwriter">
@@ -211,7 +213,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&fibo-bp-iss-ambs;InAssemblyAgencyMortgagePool">
-		<rdfs:subClassOf rdf:resource="&fibo-sec-dbt-ab-mbs;AgencyMortgagePool"/>
+		<rdfs:subClassOf rdf:resource="&fibo-sec-dbt-mbs;AgencyMortgagePool"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-fnd-arr-lif;hasStage"/>
@@ -222,7 +224,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&fibo-bp-iss-ambs;InIssuanceAgencyMortgagePool">
-		<rdfs:subClassOf rdf:resource="&fibo-sec-dbt-ab-mbs;AgencyMortgagePool"/>
+		<rdfs:subClassOf rdf:resource="&fibo-sec-dbt-mbs;AgencyMortgagePool"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-fnd-arr-lif;hasStage"/>
@@ -249,7 +251,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&fibo-bp-iss-ambs;NotYetIssuedAgencyMortgagePool">
-		<rdfs:subClassOf rdf:resource="&fibo-sec-dbt-ab-mbs;AgencyMortgagePool"/>
+		<rdfs:subClassOf rdf:resource="&fibo-sec-dbt-mbs;AgencyMortgagePool"/>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-fnd-arr-lif;hasStage"/>
@@ -278,7 +280,7 @@
 	</owl:Class>
 	
 	<owl:Class rdf:about="&fibo-bp-iss-ambs;PassThroughMBSFinalProspectus">
-		<rdfs:subClassOf rdf:resource="&fibo-sec-dbt-ab-mbs;MortgageBackedSecurityOfferingProspectus"/>
+		<rdfs:subClassOf rdf:resource="&fibo-sec-dbt-mbs;MortgageBackedSecurityOfferingProspectus"/>
 		<rdfs:label xml:lang="en">pass through m b s final prospectus</rdfs:label>
 		<skos:definition xml:lang="en">Term origin:MBS PoC Reviews</skos:definition>
 	</owl:Class>
@@ -427,7 +429,7 @@
 	<owl:ObjectProperty rdf:about="&fibo-bp-iss-ambs;addsToPool">
 		<rdfs:label xml:lang="en">adds to pool</rdfs:label>
 		<rdfs:domain rdf:resource="&fibo-bp-iss-ambs;AddMortgageToPool"/>
-		<rdfs:range rdf:resource="&fibo-loan-typ-mtg;Mortgage"/>
+		<rdfs:range rdf:resource="&fibo-loan-reln-mtg;Mortgage"/>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&fibo-bp-iss-ambs;allocatesIdentifier">
@@ -461,7 +463,7 @@
 	<owl:ObjectProperty rdf:about="&fibo-bp-iss-ambs;isAssessmentOf">
 		<rdfs:label xml:lang="en">is assessment of</rdfs:label>
 		<rdfs:domain rdf:resource="&fibo-bp-iss-ambs;ClassifyMortgage"/>
-		<rdfs:range rdf:resource="&fibo-loan-typ-mtg;Mortgage"/>
+		<rdfs:range rdf:resource="&fibo-loan-reln-mtg;Mortgage"/>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&fibo-bp-iss-ambs;isDefiningOf">
@@ -485,7 +487,7 @@
 	<owl:ObjectProperty rdf:about="&fibo-bp-iss-ambs;purchase">
 		<rdfs:label xml:lang="en">purchase</rdfs:label>
 		<rdfs:domain rdf:resource="&fibo-bp-iss-ambs;AcquireMortgage"/>
-		<rdfs:range rdf:resource="&fibo-loan-typ-mtg;Mortgage"/>
+		<rdfs:range rdf:resource="&fibo-loan-reln-mtg;Mortgage"/>
 	</owl:ObjectProperty>
 	
 	<owl:ObjectProperty rdf:about="&fibo-bp-iss-ambs;purchases">

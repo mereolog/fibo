@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE rdf:RDF [
+	<!ENTITY cmns-av "https://www.omg.org/spec/Commons/AnnotationVocabulary/">
 	<!ENTITY dct "http://purl.org/dc/terms/">
 	<!ENTITY fibo-be-le-lp "https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/">
 	<!ENTITY fibo-fbc-fct-fse "https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/">
 	<!ENTITY fibo-fbc-fi-fi "https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/">
-	<!ENTITY fibo-fbc-pas-fpas "https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/">
 	<!ENTITY fibo-fnd-acc-aeq "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/AccountingEquity/">
 	<!ENTITY fibo-fnd-acc-cur "https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/">
 	<!ENTITY fibo-fnd-arr-arr "https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/">
 	<!ENTITY fibo-fnd-oac-own "https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/">
+	<!ENTITY fibo-fnd-pty-rl "https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Roles/">
 	<!ENTITY fibo-fnd-rel-rel "https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/">
 	<!ENTITY fibo-fnd-utl-av "https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/">
 	<!ENTITY fibo-sec-sec-pls "https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/Pools/">
@@ -17,19 +18,19 @@
 	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
 	<!ENTITY skos "http://www.w3.org/2004/02/skos/core#">
-	<!ENTITY sm "http://www.omg.org/techprocess/ab/SpecificationMetadata/">
 	<!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
 ]>
 <rdf:RDF xml:base="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/Pools/"
+	xmlns:cmns-av="https://www.omg.org/spec/Commons/AnnotationVocabulary/"
 	xmlns:dct="http://purl.org/dc/terms/"
 	xmlns:fibo-be-le-lp="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/"
 	xmlns:fibo-fbc-fct-fse="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/"
 	xmlns:fibo-fbc-fi-fi="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/"
-	xmlns:fibo-fbc-pas-fpas="https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/"
 	xmlns:fibo-fnd-acc-aeq="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/AccountingEquity/"
 	xmlns:fibo-fnd-acc-cur="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/"
 	xmlns:fibo-fnd-arr-arr="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/"
 	xmlns:fibo-fnd-oac-own="https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/"
+	xmlns:fibo-fnd-pty-rl="https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Roles/"
 	xmlns:fibo-fnd-rel-rel="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/"
 	xmlns:fibo-fnd-utl-av="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/"
 	xmlns:fibo-sec-sec-pls="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/Pools/"
@@ -38,38 +39,35 @@
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 	xmlns:skos="http://www.w3.org/2004/02/skos/core#"
-	xmlns:sm="http://www.omg.org/techprocess/ab/SpecificationMetadata/"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
 	
 	<owl:Ontology rdf:about="https://spec.edmcouncil.org/fibo/ontology/SEC/Securities/Pools/">
 		<rdfs:label>Securities Pools Ontology</rdfs:label>
 		<dct:abstract>This ontology defines concepts related to high-level securities pools.</dct:abstract>
 		<dct:license rdf:datatype="&xsd;anyURI">http://opensource.org/licenses/MIT</dct:license>
-		<sm:contentLanguage rdf:datatype="&xsd;anyURI">http://www.w3.org/standards/techs/owl#w3c_all</sm:contentLanguage>
-		<sm:copyright>Copyright (c) 2016-2020 EDM Council, Inc.</sm:copyright>
-		<sm:copyright>Copyright (c) 2018-2020 Object Management Group, Inc.</sm:copyright>
-		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://spec.edmcouncil.org/fibo/ontology/BE/</sm:dependsOn>
-		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://spec.edmcouncil.org/fibo/ontology/FBC/</sm:dependsOn>
-		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://spec.edmcouncil.org/fibo/ontology/FND/</sm:dependsOn>
-		<sm:dependsOn rdf:datatype="&xsd;anyURI">https://www.omg.org/spec/LCC/</sm:dependsOn>
-		<sm:fileAbbreviation>fibo-sec-sec-pls</sm:fileAbbreviation>
-		<sm:filename>Pools.rdf</sm:filename>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/LegalPersons/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FBC/FinancialInstruments/FinancialInstruments/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FBC/FunctionalEntities/FinancialServicesEntities/"/>
-		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FBC/ProductsAndServices/FinancialProductsAndServices/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/AccountingEquity/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Accounting/CurrencyAmount/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Arrangements/Arrangements/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/OwnershipAndControl/Ownership/"/>
+		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Parties/Roles/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Relations/Relations/"/>
 		<owl:imports rdf:resource="https://spec.edmcouncil.org/fibo/ontology/FND/Utilities/AnnotationVocabulary/"/>
+		<owl:imports rdf:resource="https://www.omg.org/spec/Commons/AnnotationVocabulary/"/>
 		<owl:imports rdf:resource="https://www.omg.org/spec/LCC/Languages/LanguageRepresentation/"/>
-		<owl:versionIRI rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/20201001/Securities/Pools/"/>
+		<owl:versionIRI rdf:resource="https://spec.edmcouncil.org/fibo/ontology/SEC/20230201/Securities/Pools/"/>
+		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/20211201/Securities/Pools.rdf version of this ontology was modified to move the definition of SpecialPurposeVehicle to this ontology to make it available for use more generally and augment the definition of an instrument pool with ownership.</skos:changeNote>
 		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/SEC/20180801/Securities/Pools/ version of this ontology was modified to correct a logical inconsistency with respect to the representation of baskets.</skos:changeNote>
 		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/SEC/20190601/Securities/Pools/ version of this ontology was modified to eliminate duplication with concepts in LCC.</skos:changeNote>
 		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/SEC/20200201/Securities/Pools/ version of this ontology was modified to replace equity with owners equity in the definition of pool equity.</skos:changeNote>
+		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/SEC/20201001/Securities/Pools/ version of this ontology was modified to deprecate the concept of &apos;pool equity&apos; which was not used elsewhere and was poorly defined and eliminate an improper restriction on managed investment.</skos:changeNote>
+		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/SEC/20220101/Securities/Pools/ version of this ontology was modified to eliminate the deprecated concept for pool equity.</skos:changeNote>
+		<skos:changeNote>The https://spec.edmcouncil.org/fibo/ontology/SEC/20220501/Securities/Pools.rdf version of the ontology was modified to use the Commons Ontology Library (Commons) Annotation Vocabulary rather than the OMG&apos;s Specification Metadata vocabulary.</skos:changeNote>
 		<fibo-fnd-utl-av:hasMaturityLevel rdf:resource="&fibo-fnd-utl-av;Release"/>
+		<cmns-av:copyright>Copyright (c) 2016-2023 EDM Council, Inc.</cmns-av:copyright>
+		<cmns-av:copyright>Copyright (c) 2018-2023 Object Management Group, Inc.</cmns-av:copyright>
 	</owl:Ontology>
 	
 	<owl:Class rdf:about="&fibo-sec-sec-pls;DebtPool">
@@ -112,17 +110,40 @@
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>instrument pool</rdfs:label>
-		<skos:definition>a pool consisting of financial instruments that may be included in the same investment vehicle</skos:definition>
+		<skos:definition>pool consisting of financial instruments that may be included in the same investment vehicle</skos:definition>
+	</owl:Class>
+	
+	<owl:Class rdf:about="&fibo-sec-sec-pls;InstrumentPoolAsAsset">
+		<rdfs:subClassOf rdf:resource="&fibo-fnd-acc-aeq;FinancialAsset"/>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-oac-own;isAssetOf"/>
+				<owl:someValuesFrom>
+					<owl:Class>
+						<owl:unionOf rdf:parseType="Collection">
+							<rdf:Description rdf:about="&fibo-fbc-fct-fse;FinancialInstitution">
+							</rdf:Description>
+							<owl:Restriction>
+								<owl:onProperty rdf:resource="&fibo-fnd-pty-rl;isPlayedBy"/>
+								<owl:someValuesFrom rdf:resource="&fibo-be-le-lp;SpecialPurposeVehicle"/>
+							</owl:Restriction>
+						</owl:unionOf>
+					</owl:Class>
+				</owl:someValuesFrom>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:subClassOf>
+			<owl:Restriction>
+				<owl:onProperty rdf:resource="&fibo-fnd-pty-rl;isPlayedBy"/>
+				<owl:someValuesFrom rdf:resource="&fibo-sec-sec-pls;InstrumentPool"/>
+			</owl:Restriction>
+		</rdfs:subClassOf>
+		<rdfs:label>instrument pool as asset</rdfs:label>
+		<skos:definition>financial asset in the form of an instrument pool</skos:definition>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&fibo-sec-sec-pls;ManagedInvestment">
 		<rdfs:subClassOf rdf:resource="&fibo-sec-sec-pls;PooledFund"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-fnd-acc-aeq;representsAnInterestIn"/>
-				<owl:someValuesFrom rdf:resource="&fibo-sec-sec-pls;InstrumentPool"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
 		<rdfs:subClassOf>
 			<owl:Restriction>
 				<owl:onProperty rdf:resource="&fibo-fnd-rel-rel;isManagedBy"/>
@@ -130,8 +151,8 @@
 			</owl:Restriction>
 		</rdfs:subClassOf>
 		<rdfs:label>managed investment</rdfs:label>
-		<skos:definition>an investment pool that is controlled by a professional investment manager who invests the pool in various financial instruments and assets that align with their investment objectives and is overseen by a board of directors</skos:definition>
-		<fibo-fnd-utl-av:adaptedFrom>Bloomberg LP</fibo-fnd-utl-av:adaptedFrom>
+		<skos:definition>investment pool that is controlled by a professional investment manager who invests the pool in various financial instruments and assets that align with their investment objectives and is overseen by a board of directors</skos:definition>
+		<cmns-av:adaptedFrom>Bloomberg LP</cmns-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&fibo-sec-sec-pls;Pool">
@@ -144,7 +165,7 @@
 		</rdfs:subClassOf>
 		<rdfs:label>pool</rdfs:label>
 		<skos:definition>a combination of resources for a common purpose or benefit</skos:definition>
-		<fibo-fnd-utl-av:adaptedFrom>Barron&apos;s Dictionary of Finance and Investment Terms, Ninth Edition, 2014</fibo-fnd-utl-av:adaptedFrom>
+		<cmns-av:adaptedFrom>Barron&apos;s Dictionary of Finance and Investment Terms, Ninth Edition, 2014</cmns-av:adaptedFrom>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&fibo-sec-sec-pls;PoolConstituent">
@@ -157,19 +178,7 @@
 			</owl:Restriction>
 		</owl:equivalentClass>
 		<skos:definition>component of a pool</skos:definition>
-		<fibo-fnd-utl-av:explanatoryNote>The pool may be a pool of almost anything, brought together for some purpose. It differs from a less formal collection in that there are facts defined about the constituents and the proportions of these in the pool. Modeling note: A constituent of a pool may have facts which vary over time (such as balances) but the basic nature of the thing as a member of the pool remains the same, along with some facts which vary over time but which have a value as of the time they become members of the pool.</fibo-fnd-utl-av:explanatoryNote>
-	</owl:Class>
-	
-	<owl:Class rdf:about="&fibo-sec-sec-pls;PoolEquity">
-		<rdfs:subClassOf rdf:resource="&fibo-fnd-acc-aeq;OwnersEquity"/>
-		<rdfs:subClassOf>
-			<owl:Restriction>
-				<owl:onProperty rdf:resource="&fibo-fnd-acc-aeq;representsAnInterestIn"/>
-				<owl:someValuesFrom rdf:resource="&fibo-sec-sec-pls;Pool"/>
-			</owl:Restriction>
-		</rdfs:subClassOf>
-		<rdfs:label>pool equity</rdfs:label>
-		<skos:definition>a share or proportion of the capital gains in some pool investment such as a fund or a debt asset pool</skos:definition>
+		<cmns-av:explanatoryNote>The pool may be a pool of almost anything, brought together for some purpose. It differs from a less formal collection in that there are facts defined about the constituents and the proportions of these in the pool. Modeling note: A constituent of a pool may have facts which vary over time (such as balances) but the basic nature of the thing as a member of the pool remains the same, along with some facts which vary over time but which have a value as of the time they become members of the pool.</cmns-av:explanatoryNote>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&fibo-sec-sec-pls;PooledFund">
@@ -208,7 +217,7 @@
 			</owl:Restriction>
 		</owl:equivalentClass>
 		<skos:definition>security that is included in a securities pool</skos:definition>
-		<fibo-fnd-utl-av:explanatoryNote>This is a pool of any kind of security, and not therefore necessarily a pool of debt, though usually it is debt securities which are pooled.</fibo-fnd-utl-av:explanatoryNote>
+		<cmns-av:explanatoryNote>This is a pool of any kind of security, and not therefore necessarily a pool of debt, though usually it is debt securities which are pooled.</cmns-av:explanatoryNote>
 	</owl:Class>
 
 </rdf:RDF>

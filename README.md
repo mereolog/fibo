@@ -1,4 +1,4 @@
-<img src="https://spec.edmcouncil.org/fibo/htmlpages/master/latest/img/FIBO_logo.11aeaf9b.jpg" width="200" align="right"/>
+<img src="https://github.com/edmcouncil/html-pages/raw/develop/general/assets/img/FIBO_logo.jpg" width="200" align="right"/>
 
 # Financial Industry Business Ontology
 <img src="https://avatars0.githubusercontent.com/u/6618425?s=400&u=3ed327f38a1d043252af3177e5d6f48eef609e6a&v=4" width="150" align="right"/>
@@ -9,7 +9,9 @@ FIBO is a trademark of EDM Council, Inc. It is also standardized by the [Object 
 
 # Introduction
 
-FIBO defines the sets of things that are of interest in financial business applications and the ways that those things can relate to one another. In this way, FIBO can give meaning to any data (e.g., spreadsheets, relational databases, XML documents) that describe the business of finance. 
+The Financial Industry Business Ontology (FIBO) is a formal ontology that provides a common vocabulary for financial contracts and related concepts.  FIBO evolved out of concerns that arose during the 2008 financial crisis among individuals who worked together in data governance and management to address requirements for standardized terminology for regulatory reporting and other analyses.  The resulting ontology has continued to grow and evolve since its initial publication in 2014, with increasing support for use cases related to securities master data management, reporting, and risk analysis and management. 
+
+FIBO is hosted and sponsored by the Enterprise Data Management Council (EDMC) and is standardized by the Object Management Group (OMG) under a shared marketing and trademark agreement.  It is published in a number of human and machine-readable formats for use in business and operational settings, ranging from online glossaries to rich knowledge graph applications. Revisions are made on a continuous basis by several teams addressing specific domain areas (e.g., securities, derivatives, indices, and so forth), available in GitHub, with formal updates published quarterly.
 
 FIBO is developed as an ontology in the Web Ontology Language (OWL). The language is codified by the World Wide Web Consortium (W3C), and it is based on Description Logic. The use of logic ensures that each FIBO concept is framed in a way that is unambiguous and that is readable both by humans and machines.
 
@@ -34,7 +36,7 @@ Since January 2020, FIBO has been developed by an **open community process** wit
 
 In case of experiencing any problem with our development infrastructure (Jenkins, EDMC Jira, or WIKI), please contact the single service point:
 
-- Email: edmc@makolab.com
+- Email: pawel.garbacz@makolab.com
 - Service working hours:
   - working days, from 8:00 to 17:00 CET (from 2:00 to 11:00 EST)
     - response time: 1 h
